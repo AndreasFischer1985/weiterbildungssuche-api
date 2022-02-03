@@ -1,3 +1,5 @@
+install.packages(c("devtools","rjson","httr"))
+devtools::install_github("AndreasFischer1985/qqBaseX")
 
 #------------------------------------------------------------------
 # Get clientID & clientSecret from https://web.arbeitsagentur.de/weiterbildungssuche/suche?ort=Feucht_90537_11.224918_49.376701&uk=Bundesweit
@@ -22,7 +24,7 @@ getCredentials=function(
     if(verbose) print("\nTrying to get credentials...\n")
     get_request=httr::GET(
         url=url,
-        config=httr::config(connecttimeout=60) #config=httr::timeout(60)
+        config=httr::config(connecttimeout=60)
         )
     x=as.character(httr::content(get_request)) 
     clientId=print(gsub("(.* '|',)","",qqBaseX::matchAll(x,"clientId: (.*?),")))
@@ -128,7 +130,7 @@ getToken=function(
 
 getData=function(url="https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot?orte=Feucht_90537_11.224918_49.376701&uk=Bundesweit&bg=false&page=0",      
         accessToken="eyJhbGciOiJIUzUxMiJ9.eyAic3ViIjogIlI0amhFWGdOWW1yL21Cd1lFTi9oR0N...",
-        correlationId=NULL, #"9c326b27-ac5d-96cf-106a-d455563f1096",
+        correlationId=NULL,
         clientCookies=NULL,
         verbose=T){
     if(verbose) print("\nTrying to get data...\n")
@@ -150,7 +152,7 @@ getData=function(url="https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bi
     data_request=httr::GET(
         url=url, 
         httr::add_headers(.headers=getHeaders),
-        config=httr::config(connecttimeout=60) #config=httr::timeout(60)
+        config=httr::config(connecttimeout=60)
     )
     if(verbose){
         print(paste("URL:", url))
@@ -169,7 +171,7 @@ getData=function(url="https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bi
 #------------------------------------------------------------------
 
 dataList=list()
-if(F){ #get page 0
+if(T){ #get page 0
     url=paste0("https://web.arbeitsagentur.de/weiterbildungssuche/suche?ort=Feucht_90537_11.224918_49.376701&uk=Bundesweit&seite=0")
     credentials=getCredentials(url)
     token=getToken(
@@ -179,13 +181,12 @@ if(F){ #get page 0
     data=getData(
         url=paste0("https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot?orte=Feucht_90537_11.224918_49.376701&uk=Bundesweit&bg=false&page=0"),        
         accessToken=token[[1]])
-        #correlationId=token[[2]])
     hexCodedData=httr::content(data)
     decodedData=rawToChar(hexCodedData)
     dataList[["page 0"]]=decodedData
 
-    writeLines(decodedData,paste0(Sys.Date(),"_kursnetData_",0,".txt"))
-    save.image(paste0(Sys.Date(),"_kursnet_successfulRequest.RData"))
+    writeLines(decodedData,paste0(Sys.Date(),"_wbData_",0,".txt"))
+    save.image(paste0(Sys.Date(),"_wb_successfulRequest.RData"))
 }
 
 
@@ -195,8 +196,8 @@ if(F){ #get page 0
 
 i=0;
 token=NULL
-if(F)
-while(T){ # pages 1-499?    
+if(T)
+while(T){
     url=paste0("https://web.arbeitsagentur.de/weiterbildungssuche/suche?ort=Feucht_90537_11.224918_49.376701&uk=Bundesweit&seite=",i)
     credentials=getCredentials(url)
     if(i/50==round(i/50))token=NULL # get a new token, once in a while
@@ -208,17 +209,14 @@ while(T){ # pages 1-499?
     }
     data=getData(
         url=paste0("https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot?orte=Feucht_90537_11.224918_49.376701&uk=Bundesweit&bg=false&page=",i),
-                   #https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot?orte=Feucht_90537_11.224918_49.376701&uk=Bundesweit&bg=false&page=2
-        accessToken=token[[1]],
-        correlationId=token[[2]],
-        clientCookies=token[[3]])
+        accessToken=token[[1]])
     hexCodedData=httr::content(data)
     decodedData=rawToChar(hexCodedData)
     dataList[[paste0("page ",i)]]=decodedData
 
-    writeLines(decodedData,paste0(Sys.Date(),"_kursnetData_",i,".txt"))
-    save.image(paste0(Sys.Date(),"_kursnet_successfulRequest.RData"))
-    max=rjson::fromJSON(decodedData)[[3]][[3]]
+    writeLines(decodedData,paste0(Sys.Date(),"_wbData_",i,".txt"))
+    save.image(paste0(Sys.Date(),"_wb_successfulRequest.RData"))
+    max=3 # max=rjson::fromJSON(decodedData)[[3]][[3]]
     print(paste(i,"<",max))
     i=i+1
     if(i>=max)break;
@@ -228,7 +226,7 @@ while(T){ # pages 1-499?
 # Explore data
 #--------------
 
-if(F){
+if(T){
     decodedData=dataList[[1]]
     jsonData=rjson::fromJSON(decodedData)
     names(jsonData)
