@@ -1,0 +1,623 @@
+﻿openapi: "3.0.0"
+info:
+  description: "Eine der größten Weiterbildungsdatenbanken Deutschlands durchsuchen. <br><br> Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:<br><br> **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1 <br> **ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795. **Achtung**: der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.<br>"
+  version: "1.0.0"
+  title: "Bundesagentur für Arbeit: Weiterbildungssuche API"
+
+servers:
+  - url: "https://rest.arbeitsagentur.de/infosysbub/wbsuche"
+
+paths:
+  /pc/v1/bildungsangebot:
+    get:
+      summary:	 Weiterbildungssuche
+      description: "Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen GET-Parametern zu filtern."
+      responses:
+        '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Response'
+      parameters:
+        - in: query
+          name: sw
+          schema:
+            type: string
+          description: Suchwort 
+          example: IT-Security%2520-%2520allgemein
+          required: false
+
+        - in: query
+          name: ort
+          schema:
+            type: string
+          description: Ortsangabe nebst Postleitzahl und Koordinaten
+          example: Feucht_90537_11.224918_49.376701
+          required: false
+
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Ergebnissseite
+          example: 1
+          required: false
+
+        - in: query
+          name: size
+          schema:
+            type: integer
+          example: 50
+          description: Anzahl von Ergebnissen
+          required: false
+
+        - in: query
+          name: re
+          schema:
+            type: string
+            enum:
+                - BW
+                - BY
+                - BE
+                - BB
+                - HB
+                - HH
+                - HE
+                - MV
+                - NI
+                - NW
+                - RP
+                - SL
+                - SN
+                - ST
+                - SH
+                - TH
+          description: Region/Bundesland - BW=Baden-Württemberg, BY=Bayern, BE=Berlin, BB=Brandenburg, HB=Bremen, HH=Hamburg, HE=Hessen, MV=Mecklenburg-Vorpommern, NI=Niedersachsen, NW=Nordrhei-Westfalen, RP=Rheinland-Pfalz, SL=Saarland, SN=Sachsen, ST=Sachsen-Anhalt, SH=Schleswig-Holstein, TH=Thüringen. Mehrere Komma-getrennte Angaben möglich.
+          example: TH,BW
+          required: false
+
+        - in: query
+          name: bt
+          schema:
+            type: integer
+            enum:
+                - 0
+                - 1
+                - 2
+                - 3
+                - 4
+                - 5
+          example: 0
+          description: Beginntermin - 0=regelmäßiger Start, 1=diesen Monat, 2=Folgemonat, 3=in zwei Monaten, 4=in drei Monaten, 5=in mehr als drei Monaten
+          required: false
+
+        - in: query
+          name: uz
+          schema:
+            type: integer
+            enum:
+              - 1
+              - 2
+          example: 1,2
+          required: false
+          description: Unterrichtszeit - 1=Vollzeit, 2=Teilzeit. Mehrere Komma-getrennte Angaben möglich.
+
+        - in: query
+          name: dauer
+          schema:
+            type: integer
+            enum:
+              - 1,2
+              - 1,2,3
+              - 1,2,3,4
+              - 1,2,3,4,5
+              - 1,2,3,4,5,6
+              - 7,8,9
+              - 0
+          description: Dauer - 0=Auf Anfrage, 1,2=bis eine Woche, 1,2,3=bis ein Monat, 1,2,3,4=bis drei Monate, 1,2,3,4,5=bis sechs Monate, 1,2,3,4,5,6=bis ein Jahr, 7,8,9=mehr als ein Jahr.
+          example: 0
+          required: false
+
+        - in: query
+          name: uf
+          schema:
+            type: integer
+            enum:
+              - 101
+              - 102
+              - 103
+              - 104
+              - 105
+              - 201
+              - 202
+              - 203
+              - 204
+              - 206
+              - 301
+              - 302
+              - 303
+              - 304
+              - 401
+              - 402
+              - 403
+          description: Unterrichtsform. 101=Präsenzveranstaltung, 102=Seminar, 103=Workshop, 104=Praxistraining, 105=Sonstige Präsenzveranstaltung, 201=Virtuelles Klassenzimmer, 202=Online-Seminar, 203=Online-Coaching, 204=Selbstlernmodul, 206=Sonstige digitale Lernformen, 301=Blended Learning, 302=Combined Learning, 303=Hybrid Learning, 304=Sonstige kombinierte Lernformen,401=Fernunterricht, 402=Fernlehrgang, 403=Sonstiger Fernunterricht. Mehrere Komma-getrennte Angaben möglich (z.B. uf=101,202).
+          example: 101
+          required: false
+
+        - in: query
+          name: anbieter
+          schema:
+            type: integer
+          description: Anbieter-ID
+          example: 22210
+          required: false
+
+        - in: query
+          name: it
+          schema:
+            type: string
+            enum:
+              - RC
+              - RD
+          description: Integrationstyp - RC=Ausbildung Reha, RD=weiterbildung Reha. Mehrere Komma-getrennte Angaben möglich.
+          example: RC,RD
+          required: false
+
+        - in: query
+          name: bg
+          schema:
+            type: boolean
+          description: Bildungsgutschein - true=nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen, false=nicht nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen.
+          example: true
+          required: false
+
+
+security: 
+  - clientCredAuth: 
+    - "read"
+
+components: 
+  securitySchemes:
+    clientCredAuth:    # <---- arbitrary name
+      type: oauth2
+      description: "Die Authentifizierung funktioniert per OAuth-2-Client Credentials mit JWTs. Die Client Credentials sind z.B. in der App hinterlegt:<br><br> **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1 <br> **ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795"
+      flows:
+        clientCredentials:  
+          tokenUrl: https://rest.arbeitsagentur.de/oauth/gettoken_cc
+          scopes: {}
+  schemas:    
+    Response:
+      type: object
+      properties:
+        _embedded: 
+          type: object
+          properties: 
+            termine: 
+              type: array
+              items: 
+                type: object
+                properties: 
+                  id: 
+                    type: integer
+                    example: 130945910                
+                  unterrichtsform: 
+                    type: object
+                    properties: 
+                      id: 
+                        type: integer
+                        example: 401
+                      bezeichnung: 
+                        type: string
+                        example: Fernunterricht
+                  unterrichtszeit: 
+                    type: object
+                    properties: 
+                      id: 
+                        type: integer
+                        example: 1
+                      bezeichnung: 
+                        type: string
+                        example: Vollzeit
+                  dauer: 
+                    type: object
+                    properties: 
+                      id: 
+                        type: integer
+                        example: 5
+                      bezeichnung: 
+                        type: string
+                        example: Mehr als drei Monate bis 6 Monate
+                  anbieterbewertung: 
+                    type: string
+                    example: null
+                  angebot: 
+                    type: object
+                    properties: 
+                      id: 
+                        type: integer
+                        example: 12297678
+                      titel: 
+                        type: string
+                        example: Grundkurs - Führungsqualitäten
+                      inhalt: 
+                        type: string
+                        example: Der Lehrgang vermittelt grundlegende Führungskompetenzen
+                      abschlussart: 
+                        type: string
+                        example: Teilnahmezertifikat
+                      abschlussbezeichnung: 
+                        type: string
+                        example: Führungskräftetraining
+                      foerderung: 
+                        type: string
+                        example: Förderung durch Agentur für Arbeit möglich
+                      zugang: 
+                        type: string
+                        example: null
+                      anrechnung: 
+                        type: string
+                        example: null
+                      berechtigungen: 
+                        type: string
+                        example: null
+                      zusatzqualifikationen: 
+                        type: string
+                        example: null
+                      link: 
+                        type: string
+                        example: www.bildungsanbieter.de/angebot
+                      zielgruppe: 
+                        type: string
+                        example: Dieser Kurs richtet sich an angehende Führungskräfte.
+                  adresse: 
+                    type: object
+                    properties: 
+                      id: 
+                        type: integer
+                        example: 3821333
+                      bezeichnung: 
+                        type: string
+                        example: Musteranbieter
+                      strasse: 
+                        type: string
+                        example: Musterstraße 32
+                      hinweise: 
+                        type: string
+                        example: null
+                      ortStraße: 
+                        type: object
+                        properties: 
+                            id: 
+                              type: integer
+                              example: 26295
+                            plz: 
+                              type: integer
+                              example: 90537
+                            name: 
+                              type: string
+                              example: Feucht
+                            land: 
+                              type: object
+                              properties: 
+                                id: 
+                                  type: integer
+                                  example: 7
+                                name: 
+                                  type: string
+                                  example: Hessen
+                                laenderCode: 
+                                  type: string
+                                  example: D
+                                bundeslandCode: 
+                                  type: string
+                                  example: HES
+                                code: 
+                                  type: string
+                                  example: HES
+                      koordinaten: 
+                        type: object
+                        properties: 
+                            lat: 
+                              type: number
+                              example: 20.110998
+                            lon: 
+                              type: number
+                              example: 7.663934
+                  unterrichtszeiten:  
+                    type: string
+                    example: null
+                  sonstigeUnterrichtsform: 
+                    type: string
+                    example: null
+                  kostenWert: 
+                    type: string
+                    example: null
+                  kostenWaehrung:
+                    type: string
+                    example: EUR
+                  kostenBemerkung: 
+                    type: string
+                    example: Die Kursgebühren werden zu 100% durch den Bildungsgutschein der Agentur für Arbeit abgedeckt
+                  foerderung: 
+                    type: boolean
+                    example: true
+                  link: 
+                    type: string
+                    example: www.anbieter.de/angebot
+                  bemerkung: 
+                    type: string
+                    example: null
+                  beginn: 
+                    type: string
+                    example: null
+                  ende: 
+                    type: string
+                    example: null
+                  individuellerEinstieg: 
+                    type: boolean
+                    example: true
+                  anmeldeschluss:
+                    type: string
+                    example: null 
+                  bemerkungZeit: 
+                    type: string
+                    example: null
+                  teilnehmerMin:
+                    type: string
+                    example: null 
+                  teilnehmerMax: 
+                    type: string
+                    example: null
+                  aktualisierungsdatum: 
+                    type: integer
+                    example: 1642719600000
+                  veranstaltungsablaeufe: 
+                    type: string
+                    example: []
+                  pruefendeStelle: 
+                    type: string
+                    example: null
+                  eigeneAngebotsnummer: 
+                    type: string
+                    example: null
+                  inhouseFirmenseminar: 
+                    type: boolean
+                    example: true
+                  berufsbegleitend: 
+                    type: boolean
+                    example: true
+                  praxisanteile: 
+                    type: boolean
+                    example: true
+                  ansprechpartner: 
+                    type: array
+                    items:
+                      type: object
+                      properties: 
+                        id: 
+                          type: integer
+                          example: 1125843
+                        anrede: 
+                          type: string
+                          example: "w"
+                        titel: 
+                          type: string
+                          example: null
+                        nachname: 
+                          type: string
+                          example: Fischer
+                        vorname: 
+                          type: string
+                          example: Andreas
+                        telefonVorwahl: 
+                          type: string
+                          example: 09128
+                        telefonDurchwahl: 
+                          type: integer
+                          example: 123456789
+                        faxVorwahl: 
+                          type: string
+                          example: 09128
+                        faxDurchwahl: 
+                          type: integer
+                          example: 123456789
+                        email: 
+                          type: string
+                          example: max.mustermann@beispiel.de
+                        homepage: 
+                          type: string
+                          example: www.homepage.de
+                        rollen:
+                          type: object
+                          properties: 
+                            id: 
+                              type: integer
+                              example: 2
+                            bezeichnung: 
+                              type: string
+                              example: Gesamtansprechpartner
+                  rehabereich: 
+                    type: string
+                    example: null
+                  abstaende: 
+                    type: string
+                    example: []
+        _links: 
+          type: object
+          properties: 
+            first: 
+              type: object
+              properties: 
+                href: 
+                  type: string
+                  example: /pc/v1/bildungsangebot?bg=true&page=0&size=20
+            self: 
+              type: object
+              properties: 
+                href: 
+                  type: string
+                  example: /pc/v1/bildungsangebot?bg=true&page=0
+            next: 
+              type: object
+              properties: 
+                href: 
+                  type: string
+                  example: /pc/v1/bildungsangebot?bg=true&page=1&size=20
+            last: 
+              type: object
+              properties: 
+                href: 
+                  type: string
+                  example: /pc/v1/bildungsangebot?bg=true&page=499&size=20
+        page: 
+          type: object
+          properties: 
+            size: 
+              type: integer
+              format: int32
+              example: 20
+            totalElements: 
+              type: integer
+              format: int32
+              example: 10000
+            totalPages: 
+              type: integer
+              format: int32
+              example: 500
+            number: 
+              type: integer
+              format: int32
+              example: 0
+        aggregations: 
+          type: object
+          properties: 
+            ANZAHL_AUSGEFILTERT: 
+              type: object
+              properties: 
+                COUNT:
+                  type: integer
+                  example: 15592
+            UNTERRICHSTZEIT: 
+              type: object
+              properties: 
+                1:
+                  type: integer
+                  example: 2369933
+                2:
+                  type: integer
+                  example: 160202
+            INTEGRATION: 
+              type: object
+            ANBIETER: 
+              type: object
+              description: ANBIETER enthält eine lange Liste an Objekten - ein Objekt je Anbieter--ID. Für jede Anbieter-ID (z.B. 1371) sind als integer anzahlErgebnisse und als string name ausgewiesen.
+            UNTERRICHTSFORMEN: 
+              type: object
+            DAUER: 
+              type: object
+            BEGINNTERMIN: 
+              type: object
+            BILDUNGSGUTSCHEIN: 
+              type: object
+            LERNFORMEN: 
+              type: object
+              properties:
+                KOMBI:
+                  type: object
+                VORORT:
+                  type: object
+                FERN:
+                  type: object
+                DIGITAL:
+                  type: object
+            REGIONEN: 
+              type: object
+              properties:
+                MBV:
+                  type: string
+                  description: Mecklenburg-Vorpommern
+                  example: 9098
+                SAN:
+                  type: string
+                  description: Sachsen-Anhalt
+                  example: 9098
+                RPF:
+                  type: string
+                  description: Rheinland-Pfalz
+                  example: 9098
+                THÜ:
+                  type: string
+                  description: Thüringen
+                  example: 9098
+                -:
+                  type: string
+                  description: überregionale Angebote
+                  example: 9098
+                SLH:
+                  type: string
+                  description: Schleswig-Holstein
+                  example: 9098
+                BER:
+                  type: string
+                  description: Berlin
+                  example: 9098
+                iCH:
+                  type: string
+                  description: internationale Angebote aus der Schweiz
+                  example: 9098
+                BRA:
+                  type: string
+                  description: Brandenburg
+                  example: 9098
+                NRW:
+                  type: string
+                  description: Nordrhein-Westfalen
+                  example: 9098
+                SAA:
+                  type: string
+                  description: Sachsen-Anhalt
+                  example: 9098
+                SAC:
+                  type: string
+                  description: Sachsen
+                  example: 9098
+                BRE:
+                  type: string
+                  description: Bremen
+                  example: 9098
+                HAM:
+                  type: string
+                  description: Hamburg
+                  example: 9098
+                HES:
+                  type: string
+                  description: Hessen
+                  example: 9098
+                BAW:
+                  type: string
+                  description: Baden-Württemberg
+                  example: 9098
+                iA:
+                  type: string
+                  description: internationale Angebote aus Österreich
+                  example: 9098
+                BAY:
+                  type: string
+                  description: Bayern
+                  example: 9098
+                NDS:
+                  type: string
+                  description: Niedersachsen
+                  example: 9098
+            ANZAHL_GESAMT: 
+              type: object
+              properties:
+                COUNT:
+                  type: integer
+                  description: Mecklenburg-Vorpommern
+                  example: 2530135
+
+externalDocs:
+  description: "Weiterführende Dokumentation"
+  url: "https://github.com/AndreasFischer1985/weiterbildungssuche-api"
