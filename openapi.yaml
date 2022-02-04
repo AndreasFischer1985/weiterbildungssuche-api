@@ -1,4 +1,4 @@
-﻿openapi: "3.0.0"
+openapi: "3.0.0"
 info:
   description: "Eine der größten Weiterbildungsdatenbanken Deutschlands durchsuchen. <br><br> Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:<br><br> **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1 <br> **ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795. **Achtung**: der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.<br>"
   version: "1.0.0"
