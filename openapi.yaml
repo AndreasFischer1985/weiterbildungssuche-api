@@ -10,7 +10,6 @@ info:
    **ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795. 
    
    **Achtung**: der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.
-
   version: "1.0.0"
   title: "Bundesagentur für Arbeit: Weiterbildungssuche API"
 
@@ -20,7 +19,7 @@ servers:
 paths:
   /pc/v1/bildungsangebot:
     get:
-      summary:	 Weiterbildungssuche
+      summary: Weiterbildungssuche
       description: "Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen GET-Parametern zu filtern."
       responses:
         '200':
