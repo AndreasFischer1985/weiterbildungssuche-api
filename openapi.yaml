@@ -1,6 +1,15 @@
-﻿openapi: "3.0.0"
+openapi: "3.0.0"
 info:
-  description: "Eine der größten Weiterbildungsdatenbanken Deutschlands durchsuchen. <br><br> Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:<br><br> **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1 <br> **ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795. **Achtung**: der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.<br>"
+  description: |
+   Eine der größten Weiterbildungsdatenbanken Deutschlands durchsuchen. 
+   
+   Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:
+   
+   **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1
+   
+   **ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795. 
+   
+   **Achtung**: der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.
   version: "1.0.0"
   title: "Bundesagentur für Arbeit: Weiterbildungssuche API"
 
@@ -10,7 +19,7 @@ servers:
 paths:
   /pc/v1/bildungsangebot:
     get:
-      summary:	 Weiterbildungssuche
+      summary: Weiterbildungssuche
       description: "Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen GET-Parametern zu filtern."
       responses:
         '200':
@@ -25,7 +34,7 @@ paths:
           schema:
             type: string
           description: Suchwort 
-          example: IT-Security%2520-%2520allgemein
+          example: "IT-Security%2520-%2520allgemein"
           required: false
 
         - in: query
@@ -33,7 +42,7 @@ paths:
           schema:
             type: string
           description: Ortsangabe nebst Postleitzahl und Koordinaten
-          example: Feucht_90537_11.224918_49.376701
+          example: "Feucht_90537_11.224918_49.376701"
           required: false
 
         - in: query
@@ -74,7 +83,7 @@ paths:
                 - SH
                 - TH
           description: Region/Bundesland - BW=Baden-Württemberg, BY=Bayern, BE=Berlin, BB=Brandenburg, HB=Bremen, HH=Hamburg, HE=Hessen, MV=Mecklenburg-Vorpommern, NI=Niedersachsen, NW=Nordrhei-Westfalen, RP=Rheinland-Pfalz, SL=Saarland, SN=Sachsen, ST=Sachsen-Anhalt, SH=Schleswig-Holstein, TH=Thüringen. Mehrere Komma-getrennte Angaben möglich.
-          example: TH,BW
+          example: "BW"
           required: false
 
         - in: query
@@ -99,7 +108,7 @@ paths:
             enum:
               - 1
               - 2
-          example: 1,2
+          example: 1
           required: false
           description: Unterrichtszeit - 1=Vollzeit, 2=Teilzeit. Mehrere Komma-getrennte Angaben möglich.
 
@@ -161,7 +170,7 @@ paths:
               - RC
               - RD
           description: Integrationstyp - RC=Ausbildung Reha, RD=weiterbildung Reha. Mehrere Komma-getrennte Angaben möglich.
-          example: RC,RD
+          example: "RC"
           required: false
 
         - in: query
@@ -209,7 +218,7 @@ components:
                         example: 401
                       bezeichnung: 
                         type: string
-                        example: Fernunterricht
+                        example: "Fernunterricht"
                   unterrichtszeit: 
                     type: object
                     properties: 
@@ -218,7 +227,7 @@ components:
                         example: 1
                       bezeichnung: 
                         type: string
-                        example: Vollzeit
+                        example: "Vollzeit"
                   dauer: 
                     type: object
                     properties: 
@@ -227,9 +236,10 @@ components:
                         example: 5
                       bezeichnung: 
                         type: string
-                        example: Mehr als drei Monate bis 6 Monate
+                        example: "Mehr als drei Monate bis 6 Monate"
                   anbieterbewertung: 
                     type: string
+                    nullable: true
                     example: null
                   angebot: 
                     type: object
@@ -239,37 +249,41 @@ components:
                         example: 12297678
                       titel: 
                         type: string
-                        example: Grundkurs - Führungsqualitäten
+                        example: "Grundkurs - Führungsqualitäten"
                       inhalt: 
                         type: string
-                        example: Der Lehrgang vermittelt grundlegende Führungskompetenzen
+                        example: "Der Lehrgang vermittelt grundlegende Führungskompetenzen"
                       abschlussart: 
                         type: string
-                        example: Teilnahmezertifikat
+                        example: "Teilnahmezertifikat"
                       abschlussbezeichnung: 
                         type: string
-                        example: Führungskräftetraining
+                        example: "Führungskräftetraining"
                       foerderung: 
                         type: string
-                        example: Förderung durch Agentur für Arbeit möglich
+                        example: "Förderung durch Agentur für Arbeit möglich"
                       zugang: 
                         type: string
+                        nullable: true
                         example: null
                       anrechnung: 
                         type: string
+                        nullable: true
                         example: null
                       berechtigungen: 
                         type: string
+                        nullable: true
                         example: null
                       zusatzqualifikationen: 
                         type: string
+                        nullable: true
                         example: null
                       link: 
                         type: string
-                        example: www.bildungsanbieter.de/angebot
+                        example: "www.bildungsanbieter.de/angebot"
                       zielgruppe: 
                         type: string
-                        example: Dieser Kurs richtet sich an angehende Führungskräfte.
+                        example: "Dieser Kurs richtet sich an angehende Führungskräfte."
                   adresse: 
                     type: object
                     properties: 
@@ -278,12 +292,13 @@ components:
                         example: 3821333
                       bezeichnung: 
                         type: string
-                        example: Musteranbieter
+                        example: "Musteranbieter"
                       strasse: 
                         type: string
-                        example: Musterstraße 32
+                        example: "Musterstraße 32"
                       hinweise: 
                         type: string
+                        nullable: true
                         example: null
                       ortStraße: 
                         type: object
@@ -296,7 +311,7 @@ components:
                               example: 90537
                             name: 
                               type: string
-                              example: Feucht
+                              example: "Feucht"
                             land: 
                               type: object
                               properties: 
@@ -305,16 +320,16 @@ components:
                                   example: 7
                                 name: 
                                   type: string
-                                  example: Hessen
+                                  example: "Hessen"
                                 laenderCode: 
                                   type: string
-                                  example: D
+                                  example: "D"
                                 bundeslandCode: 
                                   type: string
-                                  example: HES
+                                  example: "HES"
                                 code: 
                                   type: string
-                                  example: HES
+                                  example: "HES"
                       koordinaten: 
                         type: object
                         properties: 
@@ -326,60 +341,72 @@ components:
                               example: 7.663934
                   unterrichtszeiten:  
                     type: string
+                    nullable: true
                     example: null
                   sonstigeUnterrichtsform: 
                     type: string
+                    nullable: true
                     example: null
                   kostenWert: 
                     type: string
+                    nullable: true
                     example: null
                   kostenWaehrung:
                     type: string
-                    example: EUR
+                    example: "EUR"
                   kostenBemerkung: 
                     type: string
-                    example: Die Kursgebühren werden zu 100% durch den Bildungsgutschein der Agentur für Arbeit abgedeckt
+                    example: "Die Kursgebühren werden zu 100% durch den Bildungsgutschein der Agentur für Arbeit abgedeckt"
                   foerderung: 
                     type: boolean
                     example: true
                   link: 
                     type: string
-                    example: www.anbieter.de/angebot
+                    example: "www.anbieter.de/angebot"
                   bemerkung: 
                     type: string
+                    nullable: true
                     example: null
                   beginn: 
                     type: string
+                    nullable: true
                     example: null
                   ende: 
                     type: string
+                    nullable: true
                     example: null
                   individuellerEinstieg: 
                     type: boolean
                     example: true
                   anmeldeschluss:
                     type: string
-                    example: null 
+                    nullable: true
+                    example: null
                   bemerkungZeit: 
                     type: string
+                    nullable: true
                     example: null
                   teilnehmerMin:
                     type: string
+                    nullable: true
                     example: null 
                   teilnehmerMax: 
                     type: string
+                    nullable: true
                     example: null
                   aktualisierungsdatum: 
                     type: integer
                     example: 1642719600000
                   veranstaltungsablaeufe: 
                     type: string
-                    example: []
+                    example: "[]"
                   pruefendeStelle: 
                     type: string
+                    nullable: true
                     example: null
                   eigeneAngebotsnummer: 
                     type: string
+                    nullable: true
                     example: null
                   inhouseFirmenseminar: 
                     type: boolean
@@ -403,31 +430,32 @@ components:
                           example: "w"
                         titel: 
                           type: string
+                          nullable: true
                           example: null
                         nachname: 
                           type: string
-                          example: Fischer
+                          example: "Fischer"
                         vorname: 
                           type: string
-                          example: Andreas
+                          example: "Andreas"
                         telefonVorwahl: 
                           type: string
-                          example: 09128
+                          example: "09128"
                         telefonDurchwahl: 
                           type: integer
                           example: 123456789
                         faxVorwahl: 
                           type: string
-                          example: 09128
+                          example: "09128"
                         faxDurchwahl: 
                           type: integer
                           example: 123456789
                         email: 
                           type: string
-                          example: max.mustermann@beispiel.de
+                          example: "max.mustermann@beispiel.de"
                         homepage: 
                           type: string
-                          example: www.homepage.de
+                          example: "www.homepage.de"
                         rollen:
                           type: object
                           properties: 
@@ -436,13 +464,14 @@ components:
                               example: 2
                             bezeichnung: 
                               type: string
-                              example: Gesamtansprechpartner
+                              example: "Gesamtansprechpartner"
                   rehabereich: 
                     type: string
+                    nullable: true
                     example: null
-                  abstaende: 
+                  abstaende:
                     type: string
-                    example: []
+                    example: "[]"
         _links: 
           type: object
           properties: 
@@ -454,11 +483,7 @@ components:
                   example: /pc/v1/bildungsangebot?bg=true&page=0&size=20
             self: 
               type: object
-              properties: 
-                href: 
-                  type: string
-                  example: /pc/v1/bildungsangebot?bg=true&page=0
-            next: 
+            next:
               type: object
               properties: 
                 href: 
@@ -501,10 +526,10 @@ components:
             UNTERRICHSTZEIT: 
               type: object
               properties: 
-                1:
+                "1":
                   type: integer
                   example: 2369933
-                2:
+                "2":
                   type: integer
                   example: 160202
             INTEGRATION: 
@@ -537,79 +562,79 @@ components:
                 MBV:
                   type: string
                   description: Mecklenburg-Vorpommern
-                  example: 9098
+                  example: "9098"
                 SAN:
                   type: string
                   description: Sachsen-Anhalt
-                  example: 9098
+                  example: "9098"
                 RPF:
                   type: string
                   description: Rheinland-Pfalz
-                  example: 9098
+                  example: "9098"
                 THÜ:
                   type: string
                   description: Thüringen
-                  example: 9098
+                  example: "9098"
                 -:
                   type: string
                   description: überregionale Angebote
-                  example: 9098
+                  example: "9098"
                 SLH:
                   type: string
                   description: Schleswig-Holstein
-                  example: 9098
+                  example: "9098"
                 BER:
                   type: string
                   description: Berlin
-                  example: 9098
+                  example: "9098"
                 iCH:
                   type: string
                   description: internationale Angebote aus der Schweiz
-                  example: 9098
+                  example: "9098"
                 BRA:
                   type: string
                   description: Brandenburg
-                  example: 9098
+                  example: "9098"
                 NRW:
                   type: string
                   description: Nordrhein-Westfalen
-                  example: 9098
+                  example: "9098"
                 SAA:
                   type: string
                   description: Sachsen-Anhalt
-                  example: 9098
+                  example: "9098"
                 SAC:
                   type: string
                   description: Sachsen
-                  example: 9098
+                  example: "9098"
                 BRE:
                   type: string
                   description: Bremen
-                  example: 9098
+                  example: "9098"
                 HAM:
                   type: string
                   description: Hamburg
-                  example: 9098
+                  example: "9098"
                 HES:
                   type: string
                   description: Hessen
-                  example: 9098
+                  example: "9098"
                 BAW:
                   type: string
-                  description: Baden-Württemberg
-                  example: 9098
+                  description: "Baden-Württemberg"
+                  example: "9098"
                 iA:
                   type: string
                   description: internationale Angebote aus Österreich
-                  example: 9098
+                  example: "9098"
                 BAY:
                   type: string
-                  description: Bayern
-                  example: 9098
+                  description: "Bayern"
+                  example: "9098"
                 NDS:
                   type: string
-                  description: Niedersachsen
-                  example: 9098
+                  description: "Niedersachsen"
+                  example: "9098"
             ANZAHL_GESAMT: 
               type: object
               properties:
