@@ -145,7 +145,7 @@ Bildungsgutschein: true=nur Angebote mit Zulassung zur Förderung mit Bildungsgu
 ## Beispiel:
 
 ```bash
-jobs=$(curl -m 60 -H "Host: rest.arbeitsagentur.de" \
+wb=$(curl -m 60 -H "Host: rest.arbeitsagentur.de" \
 -H "User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" \
 -H "Accept: application/json, text/plain, */*" \
 -H "Accept-Language: de,en-US;q=0.7,en;q=0.3" \
