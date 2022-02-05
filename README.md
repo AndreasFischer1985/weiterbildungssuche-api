@@ -4,7 +4,7 @@ Die Bundesagentur für Arbeit verfügt über eine der größten Datenbanken für
 
 ## Authentifizierung
 Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs.
-Die Client Credentials sind z.B. in der App hinterlegt:
+Client Credentials sind folgende:
 
 **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1
 
@@ -21,7 +21,10 @@ curl \
 --compressed 'https://rest.arbeitsagentur.de/oauth/gettoken_cc'
 ```
 
-## Jobbörse
+Der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.
+
+
+## Weiterbildungssuche
 
 **URL:** https://web.arbeitsagentur.de/weiterbildungssuche/suche
 	
@@ -30,14 +33,17 @@ Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit versc
 
 
 **Parameter:** *sw*  (Optional)
+
 Suchwort (z.B. IT-Security%2520-%2520allgemein)
 
 
 **Parameter:** *ort*  (Optional)
+
 Ortsangabe nebst Postleitzahl und Koordinaten (z.B. Feucht_90537_11.224918_49.376701)
 
 
 **Parameter:** *page* (Optional)
+
 Seite…
 
 
@@ -136,7 +142,8 @@ Integrationstyp: RC=Ausbildung Reha, RD=weiterbildung Reha. Mehrere Komma-getren
 
 Bildungsgutschein: true=nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen, false=nicht nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen.
 
-Beispiel:
+## Beispiel:
+
 ```bash
 jobs=$(curl -m 60 -H "Host: rest.arbeitsagentur.de" \
 -H "User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" \

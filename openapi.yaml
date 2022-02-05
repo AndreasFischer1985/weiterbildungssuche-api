@@ -1,5 +1,6 @@
 openapi: "3.0.0"
 info:
+  title: "Bundesagentur für Arbeit: Weiterbildungssuche API"
   description: |
    Eine der größten Weiterbildungsdatenbanken Deutschlands durchsuchen. 
    
@@ -11,7 +12,10 @@ info:
    
    **Achtung**: der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.
   version: "1.0.0"
-  title: "Bundesagentur für Arbeit: Weiterbildungssuche API"
+  contact:
+    name:  "AndreasFischer1985"
+    email: "andreasfischer1985@web.de"
+    url: "https://github.com/AndreasFischer1985/weiterbildungssuche-api"
 
 servers:
   - url: "https://rest.arbeitsagentur.de/infosysbub/wbsuche"
@@ -21,6 +25,7 @@ paths:
     get:
       summary: Weiterbildungssuche
       description: "Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen GET-Parametern zu filtern."
+      operationId: weiterbildungssuche
       responses:
         '200':
             description: OK
@@ -117,14 +122,17 @@ paths:
           schema:
             type: integer
             enum:
-              - 1,2
-              - 1,2,3
-              - 1,2,3,4
-              - 1,2,3,4,5
-              - 1,2,3,4,5,6
-              - 7,8,9
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
               - 0
-          description: Dauer - 0=Auf Anfrage, 1,2=bis eine Woche, 1,2,3=bis ein Monat, 1,2,3,4=bis drei Monate, 1,2,3,4,5=bis sechs Monate, 1,2,3,4,5,6=bis ein Jahr, 7,8,9=mehr als ein Jahr.
+          description: Dauer - 0=Auf Anfrage, 1,2=bis eine Woche, 1,2,3=bis ein Monat, 1,2,3,4=bis drei Monate, 1,2,3,4,5=bis sechs Monate, 1,2,3,4,5,6=bis ein Jahr, 7,8,9=mehr als ein Jahr. Mehrere Komma-getrennte Angaben sind die Regel.
           example: 0
           required: false
 
