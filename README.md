@@ -27,9 +27,9 @@ Der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessT
 ## Weiterbildungssuche
 
 **URL:** https://web.arbeitsagentur.de/weiterbildungssuche/suche
-	
 
-Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen get Parametern zu filtern:
+
+Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen GET-Parametern zu filtern:
 
 
 **Parameter:** *sw*  (Optional)
@@ -54,7 +54,7 @@ Anzahl der Ergebnisse
 
 ### Filter
 
-**Parameter:** *uz* (Optional)
+**Parameter:** *uk* (Optional)
 - Bundesweit
 - 25
 - 50
@@ -151,6 +151,7 @@ Integrationstyp: RC=Ausbildung Reha, RD=weiterbildung Reha. Mehrere Komma-getren
 - false
 
 Bildungsgutschein: true=nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen, false=nicht nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen.
+
 
 ### Beispiel:
 
