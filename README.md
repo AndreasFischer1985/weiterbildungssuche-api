@@ -1,4 +1,4 @@
-﻿# Arbeitsamt Weiterbildungssuche API 
+﻿# Arbeitsagentur Weiterbildungssuche API 
 Die Bundesagentur für Arbeit verfügt über eine der größten Datenbanken für Weiterbildungsangebote in Deutschland. Obwohl sie vollständig staatlich ist und es sich dabei um einen sehr spannenden Basisdatensatz handelt, mit dem viele Analysen möglich wären, bietet die Bundesagentur für Arbeit dafür bis heute keine offizielle API an.
 
 
@@ -48,6 +48,7 @@ Seite…
 
 
 **Parameter:** *size* (Optional)
+
 Anzahl der Ergebnisse
 
 
@@ -142,7 +143,7 @@ Integrationstyp: RC=Ausbildung Reha, RD=weiterbildung Reha. Mehrere Komma-getren
 
 Bildungsgutschein: true=nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen, false=nicht nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen.
 
-## Beispiel:
+### Beispiel:
 
 ```bash
 wb=$(curl -m 60 -H "Host: rest.arbeitsagentur.de" \
