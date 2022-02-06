@@ -1,161 +1,148 @@
-﻿# Arbeitsagentur Weiterbildungssuche API 
-Die Bundesagentur für Arbeit verfügt über eine der größten Datenbanken für Weiterbildungsangebote in Deutschland. Obwohl sie vollständig staatlich ist und es sich dabei um einen sehr spannenden Basisdatensatz handelt, mit dem viele Analysen möglich wären, bietet die Bundesagentur für Arbeit dafür bis heute keine offizielle API an.
+# Arbeitsamt Jobsuche API 
+Die Bundesagentur für Arbeit verfügt über die größte Datenbank für offene Stellen in Deutschland. Obwohl sie vollständig staatlich ist und es sich dabei um einen sehr spannenden Basisdatensatz handelt, mit dem viele Analysen möglich wären, bietet die Bundesagentur für Arbeit dafür bis heute keine offizielle API an.
 
 
 ## Authentifizierung
 Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs.
-Client Credentials sind folgende:
+Die Client Credentials sind z.B. in der App hinterlegt:
 
-**ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1
+**ClientID:** c003a37f-024f-462a-b36d-b001be4cd24a
 
-**ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795
+**ClientSecret:** 32a39620-32b3-4307-9aa1-511e3d7f48a8
 
 ```bash
 curl \
 -H 'Host: rest.arbeitsagentur.de' \
 -H 'Accept: */*' \
 -H 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' \
--H 'Accept-Language: de,en-US;q=0.7,en;q=0.3' \
--H 'User-Agent:  Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0' \
---data-binary "client_id=38053956-6618-4953-b670-b4ae7a2360b1&client_secret=c385073c-3b97-42a9-b916-08fd8a5d1795&grant_type=client_credentials" \
+-H 'Accept-Language: en-us' \
+-H 'User-Agent: Jobsuche/1070 CFNetwork/1220.1 Darwin/20.3.0' \
+--data-binary "client_id=c003a37f-024f-462a-b36d-b001be4cd24a&client_secret=32a39620-32b3-4307-9aa1-511e3d7f48a8&grant_type=client_credentials" \
 --compressed 'https://rest.arbeitsagentur.de/oauth/gettoken_cc'
 ```
 
-Der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.
+## Jobbörse
 
-
-## Weiterbildungssuche
-
-**URL:** https://web.arbeitsagentur.de/weiterbildungssuche/suche
+**URL:** https://rest.arbeitsagentur.de/jobboerse/jobsuche-service/pc/v4/jobs?angebotsart=1
 	
 
-Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen get Parametern zu filtern:
+Die Jobsuche ermöglicht verfügbare Jobangebote mit verschiedenen get Parametern zu filtern:
 
 
-**Parameter:** *sw*  (Optional)
 
-Suchwort (z.B. IT-Security%2520-%2520allgemein)
+**Parameter:** *was* (Optional)
+Freitext suche Jobtitel
 
 
-**Parameter:** *ort*  (Optional)
-
-Ortsangabe nebst Postleitzahl und Koordinaten (z.B. Feucht_90537_11.224918_49.376701)
+**Parameter:** *wo*  (Optional)
+Freitext suche Jobtitel
 
 
 **Parameter:** *page* (Optional)
-
 Seite…
 
 
+**Parameter:** *arbeitgeber* (Optional)
+ID des Arbeitgebers. z.B. "Deutsche%20Bahn%20AG"
+
+
+**Parameter:** *zeitarbeit* (Optional)
+Gibt an, ob Jobs von Zeitarbeitsfirmen in die Suchergebnisse einbezogen werden sollen (default true).
+
+
 **Parameter:** *size* (Optional)
-
 Anzahl der Ergebnisse
-
 
 ### Filter
 
+**Parameter:** *veröffentlichtseit* (Optional)
 
-**Parameter:** *re*  (Optional)
-- BW
-- BY
-- BE
-- BB
-- HB
-- HH
-- HE
-- MV
-- NI
-- NW
-- RP
-- SL
-- SN
-- ST
-- SH
-- TH
-
-Region/Bundesland: BW=Bade-Württemberg, BY=Bayern, BE=Berlin, BB=Brandenburg, HB=Bremen, HH=Hamburg, HE=Hessen, MV=Mecklenburg-Vorpommern, NI=Niedersachsen, NW=Nordrhei-Westfalen, RP=Rheinland-Pfalz, SL=Saarland, SN=Sachsen, ST=Sachsen-Anhalt, SH=Schleswig-Holstein, TH=Thüringen. Mehrere Komma-getrennte Angaben möglich (z.B. re=TH,BW).
-
-**Parameter:** *bt* (Optional)
-- 0
-- 1
-- 2
-- 3
-- 4
-- 5
-
-Beginntermin (0=regelmäßiger Start, 1=diesen Monat, 2=Folgemonat, 3=in zwei Monaten, 4=in drei Monaten, 5=in mehr als drei Monaten)
-
-**Parameter:** *uz* (Optional)
-- 1
-- 2
-
-Unterrichtszeit: 1=Vollzeit, 2=Teilzeit. Mehrere Komma-getrennte Angaben möglich (z.B. uz=1,2)
+Anzahl der Tage, seit der Job veröffentlicht wurde. Kann zwischen 0 und 100 Tagen liegen.
 
 
-**Parameter:** *dauer* (Optional)
-- 1,2
-- 1,2,3
-- 1,2,3,4
-- 1,2,3,4,5
-- 1,2,3,4,5,6
-- 7,8,9
-- 0
 
-Dauer: 0=Auf Anfrage, 1,2=bis eine Woche, 1,2,3=bis ein Monat, 1,2,3,4=bis drei Monate, 1,2,3,4,5=bis sechs Monate, 1,2,3,4,5,6=bis ein Jahr, 7,8,9=mehr als ein Jahr
-
-
-**Parameter:** *uf* (Optional)
-- 101
-- 102
-- 103
-- 104
-- 105
-- 201
-- 202
-- 203
-- 204
-- 206
-- 301
-- 302
-- 303
-- 304
-- 401
-- 402
-- 403
-
-Unterrichtsform: 101=Präsenzveranstaltung, 102=Seminar, 103=Workshop, 104=Praxistraining, 105=Sonstige Präsenzveranstaltung, 201=Virtuelles Klassenzimmer, 202=Online-Seminar, 203=Online-Coaching, 204=Selbstlernmodul, 206=Sonstige digitale Lernformen, 301=Blended Learning, 302=Combined Learning, 303=Hybrid Learning, 304=Sonstige kombinierte Lernformen,401=Fernunterricht, 402=Fernlehrgang, 403=Sonstiger Fernunterricht. Mehrere Komma-getrennte Angaben möglich (z.B. uf=101,202).
-
-
-**Parameter:** *anbieter* (Optional)
-Anbieter-ID (z.B. 22210). 
-
-
-**Parameter:** *it* (Optional)
-- RC
-- RD
-
-Integrationstyp: RC=Ausbildung Reha, RD=weiterbildung Reha. Mehrere Komma-getrennte Angaben möglich (z.B. re=RC,RD).
-
-
-**Parameter:** *bg* (Optional)
+**Parameter:** *pav* (Optional)
+- false 
 - true
-- false
 
-Bildungsgutschein: true=nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen, false=nicht nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen.
+Gibt an, ob Jobs von privaten Arbeitsvermittlungen in die Suchergebnisse einbezogen werden sollen.
 
-### Beispiel:
 
+
+**Parameter:** *angebotsart*  (Optional)
+- 1 
+- 2 
+- 3 
+- 34
+
+1=ARBEIT; 2=SELBSTAENDIGKEIT, 4=AUSBILDUNG/Duales Studium, 34=Praktikum/Trainee
+
+**Parameter:** *befristung*  (Optional)
+- 1
+- 2
+
+Semikolon-separierte mehrere Werte möglich (z.B. befristung=1;2) 1 = befristet; 2 = unbefristet
+
+
+Parameter: behinderung (Optional)
+- false 
+- true
+
+
+Parameter: corona (Optional)
+- false 
+- true
+
+Wenn AN, werden nur Jobs die im Kontext von Corona angeboten werden angezeigt.
+
+**Parameter:** *umreis* (Optional)
+
+Umkreis in Kilometern von Wo-Parameter. (z.B. 25 oder 200)
+
+
+
+**Parameter:** *arbeitszeit*  (Optional)
+- vz 
+- tz 
+- snw
+- ho 
+- mj 
+
+Semikolon-separierte mehrere Werte möglich (z.B. arbeitszeit=vz;tz) vz=VOLLZEIT, tz=TEILZEIT, snw=SCHICHT_NACHTARBEIT_WOCHENENDE, ho=HEIM_TELEARBEIT, mj=MINIJOB
+
+
+
+Beispiel:
 ```bash
-wb=$(curl -m 60 -H "Host: rest.arbeitsagentur.de" \
+res=$(curl -m 60 -H "Host: rest.arbeitsagentur.de" \
 -H "User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" \
--H "Accept: application/json, text/plain, */*" \
+-H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" \
 -H "Accept-Language: de,en-US;q=0.7,en;q=0.3" \
 -H "Accept-Encoding: gzip, deflate, br" \
 -H "Origin: https://web.arbeitsagentur.de" \
 -H "DNT: 1" \
 -H "Connection: keep-alive" \
 -H "Pragma: no-cache" \
+-H "Referer: https://jobboerse.arbeitsagentur.de/vamJB/stellenangeboteFinden.html?execution=e1s4&" \
 -H "Cache-Control: no-cache" \
 -H "OAuthAccessToken: $token" \
-'https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot?orte=Feucht_90537_11.224918_49.376701&uk=Bundesweit&bg=false&page=0')
+'https://rest.arbeitsagentur.de/jobboerse/jobsuche-service/pc/v4/jobs?angebotsart=1&wo=Berlin&umkreis=200&arbeitszeit=ho;mj&page=1&size=25&pav=false')
 ```
+
+## Jobdetails
+
+### Detailseite
+Abrufen von Details zu einem Job.
+
+**URL** https://rest.arbeitsagentur.de/jobboerse/jobsuche-service/pc/v4/jobdetails/[hashId]
+
+### Bewerbung
+Kontaktdaten für eine Bewerbung. (Ansprechpartner, Telefonnummer, …)
+
+**URL** https://rest.arbeitsagentur.de/jobboerse/jobsuche-service/pc/v4/jobs/[hashId]/bewerbung
+
+### Arbeitgeberlogo zu einem Job
+Logo des Unternehmens
+
+**URL** https://rest.arbeitsagentur.de/jobboerse/jobsuche-service/pc/v4/arbeitgeberlogo/[hashId]
+
