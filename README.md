@@ -26,7 +26,7 @@ Der generierte Token muss bei folgenden GET-requests an https://rest.arbeitsagen
 
 ## Weiterbildungssuche
 
-**URL:** https://web.arbeitsagentur.de/weiterbildungssuche/suche
+**URL:** https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot
 
 
 Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen GET-Parametern zu filtern:
