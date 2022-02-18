@@ -1,5 +1,5 @@
 """
-    Bundesagentur für Arbeit: Weiterbildungssuche API
+    Arbeitsagentur Weiterbildungssuche API
 
     Eine der größten Weiterbildungsdatenbanken Deutschlands durchsuchen.   Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:  **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1  **ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795.   **Achtung**: der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.   # noqa: E501
 
@@ -52,6 +52,7 @@ class DefaultApi(object):
                     "ort",
                     "page",
                     "size",
+                    "uk",
                     "re",
                     "bt",
                     "uz",
@@ -64,6 +65,7 @@ class DefaultApi(object):
                 "required": [],
                 "nullable": [],
                 "enum": [
+                    "uk",
                     "re",
                     "bt",
                     "uz",
@@ -76,6 +78,14 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {
+                    ("uk",): {
+                        "BUNDESWEIT": "Bundesweit",
+                        "25": "25",
+                        "50": "50",
+                        "100": "100",
+                        "150": "150",
+                        "200": "200",
+                    },
                     ("re",): {
                         "BW": "BW",
                         "BY": "BY",
@@ -134,6 +144,7 @@ class DefaultApi(object):
                     "ort": (str,),
                     "page": (int,),
                     "size": (int,),
+                    "uk": (str,),
                     "re": (str,),
                     "bt": (int,),
                     "uz": (int,),
@@ -148,6 +159,7 @@ class DefaultApi(object):
                     "ort": "ort",
                     "page": "page",
                     "size": "size",
+                    "uk": "uk",
                     "re": "re",
                     "bt": "bt",
                     "uz": "uz",
@@ -162,6 +174,7 @@ class DefaultApi(object):
                     "ort": "query",
                     "page": "query",
                     "size": "query",
+                    "uk": "query",
                     "re": "query",
                     "bt": "query",
                     "uz": "query",
@@ -196,6 +209,7 @@ class DefaultApi(object):
             ort (str): Ortsangabe nebst Postleitzahl und Koordinaten. [optional]
             page (int): Ergebnissseite. [optional]
             size (int): Anzahl von Ergebnissen. [optional]
+            uk (str): Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.. [optional]
             re (str): Region/Bundesland - BW=Baden-Württemberg, BY=Bayern, BE=Berlin, BB=Brandenburg, HB=Bremen, HH=Hamburg, HE=Hessen, MV=Mecklenburg-Vorpommern, NI=Niedersachsen, NW=Nordrhei-Westfalen, RP=Rheinland-Pfalz, SL=Saarland, SN=Sachsen, ST=Sachsen-Anhalt, SH=Schleswig-Holstein, TH=Thüringen. Mehrere Komma-getrennte Angaben möglich.. [optional]
             bt (int): Beginntermin - 0=regelmäßiger Start, 1=diesen Monat, 2=Folgemonat, 3=in zwei Monaten, 4=in drei Monaten, 5=in mehr als drei Monaten. [optional]
             uz (int): Unterrichtszeit - 1=Vollzeit, 2=Teilzeit. Mehrere Komma-getrennte Angaben möglich.. [optional]
