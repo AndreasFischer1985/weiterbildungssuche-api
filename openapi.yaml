@@ -1,5 +1,6 @@
 openapi: "3.0.0"
 info:
+  title: "Arbeitsagentur Weiterbildungssuche API"
   description: |
    Eine der größten Weiterbildungsdatenbanken Deutschlands durchsuchen. 
    
@@ -11,7 +12,10 @@ info:
    
    **Achtung**: der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.
   version: "1.0.0"
-  title: "Bundesagentur für Arbeit: Weiterbildungssuche API"
+  contact:
+    name:  "AndreasFischer1985"
+    email: "andreasfischer1985@web.de"
+    url: "https://github.com/AndreasFischer1985/weiterbildungssuche-api"
 
 servers:
   - url: "https://rest.arbeitsagentur.de/infosysbub/wbsuche"
@@ -21,6 +25,7 @@ paths:
     get:
       summary: Weiterbildungssuche
       description: "Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen GET-Parametern zu filtern."
+      operationId: weiterbildungssuche
       responses:
         '200':
             description: OK
@@ -59,6 +64,21 @@ paths:
             type: integer
           example: 50
           description: Anzahl von Ergebnissen
+          required: false
+
+        - in: query
+          name: uk
+          schema:
+            type: string
+            enum:
+                - Bundesweit
+                - 25
+                - 50
+                - 100
+                - 150
+                - 200
+          description: Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.
+          example: "Bundesweit"
           required: false
 
         - in: query
@@ -117,14 +137,17 @@ paths:
           schema:
             type: integer
             enum:
-              - 1,2
-              - 1,2,3
-              - 1,2,3,4
-              - 1,2,3,4,5
-              - 1,2,3,4,5,6
-              - 7,8,9
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
               - 0
-          description: Dauer - 0=Auf Anfrage, 1,2=bis eine Woche, 1,2,3=bis ein Monat, 1,2,3,4=bis drei Monate, 1,2,3,4,5=bis sechs Monate, 1,2,3,4,5,6=bis ein Jahr, 7,8,9=mehr als ein Jahr.
+          description: Dauer - 0=Auf Anfrage, 1,2=bis eine Woche, 1,2,3=bis ein Monat, 1,2,3,4=bis drei Monate, 1,2,3,4,5=bis sechs Monate, 1,2,3,4,5,6=bis ein Jahr, 7,8,9=mehr als ein Jahr. Mehrere Komma-getrennte Angaben sind die Regel.
           example: 0
           required: false
 
@@ -190,7 +213,7 @@ components:
   securitySchemes:
     clientCredAuth:    # <---- arbitrary name
       type: oauth2
-      description: "Die Authentifizierung funktioniert per OAuth-2-Client Credentials mit JWTs. Die Client Credentials sind z.B. in der App hinterlegt:<br><br> **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1 <br> **ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795"
+      description: "Die Authentifizierung funktioniert per OAuth-2-Client Credentials mit JWTs. Client Credentials sind folgende:<br><br> **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1 <br> **ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795"
       flows:
         clientCredentials:  
           tokenUrl: https://rest.arbeitsagentur.de/oauth/gettoken_cc

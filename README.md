@@ -1,10 +1,10 @@
-﻿# Arbeitsamt Weiterbildungssuche API 
+﻿# Arbeitsagentur Weiterbildungssuche API 
 Die Bundesagentur für Arbeit verfügt über eine der größten Datenbanken für Weiterbildungsangebote in Deutschland. Obwohl sie vollständig staatlich ist und es sich dabei um einen sehr spannenden Basisdatensatz handelt, mit dem viele Analysen möglich wären, bietet die Bundesagentur für Arbeit dafür bis heute keine offizielle API an.
 
 
 ## Authentifizierung
 Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs.
-Die Client Credentials sind z.B. in der App hinterlegt:
+Client Credentials sind folgende:
 
 **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1
 
@@ -21,32 +21,48 @@ curl \
 --compressed 'https://rest.arbeitsagentur.de/oauth/gettoken_cc'
 ```
 
-## Jobbörse
+Der generierte Token muss bei folgenden GET-requests an https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot im header als 'OAuthAccessToken' inkludiert werden.
 
-**URL:** https://web.arbeitsagentur.de/weiterbildungssuche/suche
-	
 
-Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen get Parametern zu filtern:
+## Weiterbildungssuche
+
+**URL:** https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot
+
+
+Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen GET-Parametern zu filtern:
 
 
 **Parameter:** *sw*  (Optional)
+
 Suchwort (z.B. IT-Security%2520-%2520allgemein)
 
 
 **Parameter:** *ort*  (Optional)
+
 Ortsangabe nebst Postleitzahl und Koordinaten (z.B. Feucht_90537_11.224918_49.376701)
 
 
 **Parameter:** *page* (Optional)
+
 Seite…
 
 
 **Parameter:** *size* (Optional)
+
 Anzahl der Ergebnisse
 
 
 ### Filter
 
+**Parameter:** *uk* (Optional)
+- Bundesweit
+- 25
+- 50
+- 100
+- 150
+- 200
+
+Umkreis:  Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.
 
 **Parameter:** *re*  (Optional)
 - BW
@@ -136,9 +152,11 @@ Integrationstyp: RC=Ausbildung Reha, RD=weiterbildung Reha. Mehrere Komma-getren
 
 Bildungsgutschein: true=nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen, false=nicht nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen.
 
-Beispiel:
+
+### Beispiel:
+
 ```bash
-jobs=$(curl -m 60 -H "Host: rest.arbeitsagentur.de" \
+wb=$(curl -m 60 -H "Host: rest.arbeitsagentur.de" \
 -H "User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" \
 -H "Accept: application/json, text/plain, */*" \
 -H "Accept-Language: de,en-US;q=0.7,en;q=0.3" \

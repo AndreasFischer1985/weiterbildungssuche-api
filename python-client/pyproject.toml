@@ -2,7 +2,7 @@
 [tool.poetry]
 name = "de-weiterbildungssuche"
 version = "0.1.0"
-description = "Bundesagentur für Arbeit: Weiterbildungssuche API"
+description = "Arbeitsagentur Weiterbildungssuche API"
 keywords = ["OpenAPI", "OpenAPI-Generator", "weiterbildungssuche", "App", "API"]
 homepage = "https://github.com/bundesAPI/weiterbildungssuche-api"
 authors = ["BundesAPI <kontakt@bund.dev>"]
