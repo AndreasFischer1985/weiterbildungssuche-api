@@ -49,6 +49,7 @@ with weiterbildungssuche.ApiClient(configuration) as api_client:
     ort = "Feucht_90537_11.224918_49.376701" # str | Ortsangabe nebst Postleitzahl und Koordinaten (optional)
     page = 1 # int | Ergebnissseite (optional)
     size = 50 # int | Anzahl von Ergebnissen (optional)
+    uk = "Bundesweit" # str | Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km. (optional)
     re = "BW" # str | Region/Bundesland - BW=Baden-Württemberg, BY=Bayern, BE=Berlin, BB=Brandenburg, HB=Bremen, HH=Hamburg, HE=Hessen, MV=Mecklenburg-Vorpommern, NI=Niedersachsen, NW=Nordrhei-Westfalen, RP=Rheinland-Pfalz, SL=Saarland, SN=Sachsen, ST=Sachsen-Anhalt, SH=Schleswig-Holstein, TH=Thüringen. Mehrere Komma-getrennte Angaben möglich. (optional)
     bt = 0 # int | Beginntermin - 0=regelmäßiger Start, 1=diesen Monat, 2=Folgemonat, 3=in zwei Monaten, 4=in drei Monaten, 5=in mehr als drei Monaten (optional)
     uz = 1 # int | Unterrichtszeit - 1=Vollzeit, 2=Teilzeit. Mehrere Komma-getrennte Angaben möglich. (optional)
@@ -62,7 +63,7 @@ with weiterbildungssuche.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Weiterbildungssuche
-        api_response = api_instance.weiterbildungssuche(sw=sw, ort=ort, page=page, size=size, re=re, bt=bt, uz=uz, dauer=dauer, uf=uf, anbieter=anbieter, it=it, bg=bg)
+        api_response = api_instance.weiterbildungssuche(sw=sw, ort=ort, page=page, size=size, uk=uk, re=re, bt=bt, uz=uz, dauer=dauer, uf=uf, anbieter=anbieter, it=it, bg=bg)
         pprint(api_response)
     except weiterbildungssuche.ApiException as e:
         print("Exception when calling DefaultApi->weiterbildungssuche: %s\n" % e)
@@ -77,6 +78,7 @@ Name | Type | Description  | Notes
  **ort** | **str**| Ortsangabe nebst Postleitzahl und Koordinaten | [optional]
  **page** | **int**| Ergebnissseite | [optional]
  **size** | **int**| Anzahl von Ergebnissen | [optional]
+ **uk** | **str**| Umkreis - Bundesweit&#x3D;Bundesweit, 25&#x3D;25 km, 50&#x3D;50 km, 100&#x3D;100 km, 150&#x3D;150 km, 200&#x3D;200 km. | [optional]
  **re** | **str**| Region/Bundesland - BW&#x3D;Baden-Württemberg, BY&#x3D;Bayern, BE&#x3D;Berlin, BB&#x3D;Brandenburg, HB&#x3D;Bremen, HH&#x3D;Hamburg, HE&#x3D;Hessen, MV&#x3D;Mecklenburg-Vorpommern, NI&#x3D;Niedersachsen, NW&#x3D;Nordrhei-Westfalen, RP&#x3D;Rheinland-Pfalz, SL&#x3D;Saarland, SN&#x3D;Sachsen, ST&#x3D;Sachsen-Anhalt, SH&#x3D;Schleswig-Holstein, TH&#x3D;Thüringen. Mehrere Komma-getrennte Angaben möglich. | [optional]
  **bt** | **int**| Beginntermin - 0&#x3D;regelmäßiger Start, 1&#x3D;diesen Monat, 2&#x3D;Folgemonat, 3&#x3D;in zwei Monaten, 4&#x3D;in drei Monaten, 5&#x3D;in mehr als drei Monaten | [optional]
  **uz** | **int**| Unterrichtszeit - 1&#x3D;Vollzeit, 2&#x3D;Teilzeit. Mehrere Komma-getrennte Angaben möglich. | [optional]

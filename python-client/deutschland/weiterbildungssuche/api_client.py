@@ -1,5 +1,5 @@
 """
-    Bundesagentur für Arbeit: Weiterbildungssuche API
+    Arbeitsagentur Weiterbildungssuche API
 
     Eine der größten Weiterbildungsdatenbanken Deutschlands durchsuchen.   Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:  **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1  **ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795.   **Achtung**: der generierte Token muss bei folgenden GET-requests im header als 'OAuthAccessToken' inkludiert werden.   # noqa: E501
 
@@ -656,7 +656,7 @@ class ApiClient(object):
         :return: Content-Type (e.g. application/json).
         """
         if not content_types:
-            return "application/json"
+            return None
 
         content_types = [x.lower() for x in content_types]
 
@@ -944,12 +944,13 @@ class Endpoint(object):
             content_type_headers_list = self.headers_map["content_type"]
             if content_type_headers_list:
                 if params["body"] != "":
-                    header_list = self.api_client.select_header_content_type(
+                    content_types_list = self.api_client.select_header_content_type(
                         content_type_headers_list,
                         self.settings["http_method"],
                         params["body"],
                     )
-                    params["header"]["Content-Type"] = header_list
+                    if content_types_list:
+                        params["header"]["Content-Type"] = content_types_list
 
         return self.api_client.call_api(
             self.settings["endpoint_path"],
