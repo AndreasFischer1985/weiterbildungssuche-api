@@ -21,7 +21,7 @@ curl \
 --compressed 'https://rest.arbeitsagentur.de/oauth/gettoken_cc'
 ```
 
-Der generierte Token muss bei folgenden GET-requests an https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot im header als 'OAuthAccessToken' inkludiert werden.
+Der Token ist via POST-request von https://rest.arbeitsagentur.de/oauth/gettoken_cc zu beziehen und muss bei folgenden GET-requests an https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot im header als 'OAuthAccessToken' inkludiert werden.
 
 
 ## Weiterbildungssuche
