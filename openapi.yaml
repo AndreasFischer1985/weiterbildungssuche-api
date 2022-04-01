@@ -663,7 +663,7 @@ components:
               properties:
                 COUNT:
                   type: integer
-                  description: Mecklenburg-Vorpommern
+                  description: Anzahl gesamt
                   example: 2530135
 
 externalDocs:
