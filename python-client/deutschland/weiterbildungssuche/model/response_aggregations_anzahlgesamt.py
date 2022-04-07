@@ -140,11 +140,11 @@ class ResponseAggregationsANZAHLGESAMT(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            count (int): Mecklenburg-Vorpommern. [optional]  # noqa: E501
+            count (int): Anzahl gesamt. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop("_check_type", True)
-        _spec_property_naming = kwargs.pop("_spec_property_naming", False)
+        _spec_property_naming = kwargs.pop("_spec_property_naming", True)
         _path_to_item = kwargs.pop("_path_to_item", ())
         _configuration = kwargs.pop("_configuration", None)
         _visited_composed_classes = kwargs.pop("_visited_composed_classes", ())
@@ -231,7 +231,7 @@ class ResponseAggregationsANZAHLGESAMT(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            count (int): Mecklenburg-Vorpommern. [optional]  # noqa: E501
+            count (int): Anzahl gesamt. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop("_check_type", True)
