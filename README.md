@@ -32,6 +32,9 @@ Der Token ist via POST-request von https://rest.arbeitsagentur.de/oauth/gettoken
 Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen GET-Parametern zu filtern:
 
 
+### Filter
+
+
 **Parameter:** *sw*  (Optional)
 
 Suchwort (z.B. IT-Security%2520-%2520allgemein)
@@ -44,15 +47,13 @@ Ortsangabe nebst Postleitzahl und Koordinaten (z.B. Feucht_90537_11.224918_49.37
 
 **Parameter:** *page* (Optional)
 
-Seite…
+Seite (beginnend bei 0).
 
 
 **Parameter:** *size* (Optional)
 
 Anzahl der Ergebnisse
 
-
-### Filter
 
 **Parameter:** *uk* (Optional)
 - Bundesweit
