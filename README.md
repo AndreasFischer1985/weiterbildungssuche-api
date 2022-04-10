@@ -1,10 +1,10 @@
-﻿# Arbeitsagentur Weiterbildungssuche API 
+# Arbeitsagentur Weiterbildungssuche API 
 Die Bundesagentur für Arbeit verfügt über eine der größten Datenbanken für Weiterbildungsangebote in Deutschland. Obwohl sie vollständig staatlich ist und es sich dabei um einen sehr spannenden Basisdatensatz handelt, mit dem viele Analysen möglich wären, bietet die Bundesagentur für Arbeit dafür bis heute keine offizielle API an.
 
 
 ## Authentifizierung
 Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs.
-Client Credentials sind folgende:
+Client Credentials sind, wie sich z.B. einem GET-request an https://web.arbeitsagentur.de/weiterbildungssuche/suche entnehmen lässt, folgende:
 
 **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1
 
