@@ -34,6 +34,19 @@ paths:
                 schema:
                   $ref: '#/components/schemas/Response'
       parameters:
+
+        - in: query
+          name: sys
+          schema:
+            type: string
+            enum:
+                - C
+                - D
+                - CD
+          description: Systematik - C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiksuche.
+          example: "C"
+          required: false
+
         - in: query
           name: sw
           schema:

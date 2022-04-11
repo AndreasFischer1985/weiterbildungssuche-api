@@ -35,6 +35,14 @@ Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit versc
 ### Filter
 
 
+**Parameter:** *sys*  (Optional)
+- C
+- D
+- CD
+
+Systematik: C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiksuche.
+
+
 **Parameter:** *sw*  (Optional)
 
 Suchwort (z.B. IT-Security%2520-%2520allgemein)
