@@ -45,6 +45,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with weiterbildungssuche.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
+    sys = "C" # str | Systematik - C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiksuche. (optional)
     sw = "IT-Security%2520-%2520allgemein" # str | Suchwort (optional)
     ort = "Feucht_90537_11.224918_49.376701" # str | Ortsangabe nebst Postleitzahl und Koordinaten (optional)
     page = 1 # int | Ergebnissseite (optional)
@@ -63,7 +64,7 @@ with weiterbildungssuche.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Weiterbildungssuche
-        api_response = api_instance.weiterbildungssuche(sw=sw, ort=ort, page=page, size=size, uk=uk, re=re, bt=bt, uz=uz, dauer=dauer, uf=uf, anbieter=anbieter, it=it, bg=bg)
+        api_response = api_instance.weiterbildungssuche(sys=sys, sw=sw, ort=ort, page=page, size=size, uk=uk, re=re, bt=bt, uz=uz, dauer=dauer, uf=uf, anbieter=anbieter, it=it, bg=bg)
         pprint(api_response)
     except weiterbildungssuche.ApiException as e:
         print("Exception when calling DefaultApi->weiterbildungssuche: %s\n" % e)
@@ -74,6 +75,7 @@ with weiterbildungssuche.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **sys** | **str**| Systematik - C&#x3D;Berufliche Qualifikation, D&#x3D;Aufstiegsweiterbildung, CD&#x3D;Systematiksuche. | [optional]
  **sw** | **str**| Suchwort | [optional]
  **ort** | **str**| Ortsangabe nebst Postleitzahl und Koordinaten | [optional]
  **page** | **int**| Ergebnissseite | [optional]

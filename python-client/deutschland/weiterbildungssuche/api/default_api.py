@@ -48,6 +48,7 @@ class DefaultApi(object):
             },
             params_map={
                 "all": [
+                    "sys",
                     "sw",
                     "ort",
                     "page",
@@ -65,6 +66,7 @@ class DefaultApi(object):
                 "required": [],
                 "nullable": [],
                 "enum": [
+                    "sys",
                     "uk",
                     "re",
                     "bt",
@@ -78,6 +80,7 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {
+                    ("sys",): {"C": "C", "D": "D", "CD": "CD"},
                     ("uk",): {
                         "BUNDESWEIT": "Bundesweit",
                         "25": "25",
@@ -140,6 +143,7 @@ class DefaultApi(object):
                     ("it",): {"RC": "RC", "RD": "RD"},
                 },
                 "openapi_types": {
+                    "sys": (str,),
                     "sw": (str,),
                     "ort": (str,),
                     "page": (int,),
@@ -155,6 +159,7 @@ class DefaultApi(object):
                     "bg": (bool,),
                 },
                 "attribute_map": {
+                    "sys": "sys",
                     "sw": "sw",
                     "ort": "ort",
                     "page": "page",
@@ -170,6 +175,7 @@ class DefaultApi(object):
                     "bg": "bg",
                 },
                 "location_map": {
+                    "sys": "query",
                     "sw": "query",
                     "ort": "query",
                     "page": "query",
@@ -205,6 +211,7 @@ class DefaultApi(object):
 
 
         Keyword Args:
+            sys (str): Systematik - C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiksuche.. [optional]
             sw (str): Suchwort. [optional]
             ort (str): Ortsangabe nebst Postleitzahl und Koordinaten. [optional]
             page (int): Ergebnissseite. [optional]
