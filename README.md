@@ -73,24 +73,31 @@ Anzahl der Ergebnisse
 Umkreis:  Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.
 
 **Parameter:** *re*  (Optional)
-- BW
-- BY
-- BE
-- BB
-- HB
-- HH
-- HE
-- MV
-- NI
-- NW
-- RP
-- SL
-- SN
-- ST
-- SH
-- TH
+- BAW
+- BAY
+- BER
+- BRA
+- BRE
+- HAM
+- HES
+- MBV
+- NDS
+- NRW
+- RPF
+- SAA
+- SAC
+- SAN
+- SLH
+- TH%C3%9C
+- "-"
+- iGB
+- iP
+- iCH
+- iA
+- iE
 
-Region/Bundesland: BW=Bade-Württemberg, BY=Bayern, BE=Berlin, BB=Brandenburg, HB=Bremen, HH=Hamburg, HE=Hessen, MV=Mecklenburg-Vorpommern, NI=Niedersachsen, NW=Nordrhei-Westfalen, RP=Rheinland-Pfalz, SL=Saarland, SN=Sachsen, ST=Sachsen-Anhalt, SH=Schleswig-Holstein, TH=Thüringen. Mehrere Komma-getrennte Angaben möglich (z.B. re=TH,BW).
+
+Region/Bundesland: BAW=Baden-Württemberg, BAY=Bayern, BER=Berlin, BRA=Brandenburg, BRE=Bremen, HAM=Hamburg, HES=Hessen, MBV=Mecklenburg-Vorpommern, NDS=Niedersachsen, NRW=Nordrhein-Westfalen, RPF=Rheinland-Pfalz, SAA=Saarland, SAC=Sachsen, SAN=Sachsen-Anhalt, SLH=Schleswig-Holstein, TH%C3%9C=Thüringen, -=überregional, iGB=Großbritannien, iP=Portugal, iCH=Schweiz, iA=Österreich, iE=Spanien. Mehrere Komma-getrennte Angaben möglich (z.B. re=TH%C3%9C,BAW).
 
 **Parameter:** *bt* (Optional)
 - 0
