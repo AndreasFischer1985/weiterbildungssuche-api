@@ -29,38 +29,38 @@ from deutschland.weiterbildungssuche.model.response_aggregations_unterrichstzeit
     ResponseAggregationsUNTERRICHSTZEIT,
 )
 from deutschland.weiterbildungssuche.model.response_embedded import ResponseEmbedded
-from deutschland.weiterbildungssuche.model.response_embedded_adresse import (
-    ResponseEmbeddedAdresse,
+from deutschland.weiterbildungssuche.model.response_embedded_termine_inner import (
+    ResponseEmbeddedTermineInner,
 )
-from deutschland.weiterbildungssuche.model.response_embedded_adresse_koordinaten import (
-    ResponseEmbeddedAdresseKoordinaten,
+from deutschland.weiterbildungssuche.model.response_embedded_termine_inner_adresse import (
+    ResponseEmbeddedTermineInnerAdresse,
 )
-from deutschland.weiterbildungssuche.model.response_embedded_adresse_ort_stra_e import (
-    ResponseEmbeddedAdresseOrtStraE,
+from deutschland.weiterbildungssuche.model.response_embedded_termine_inner_adresse_koordinaten import (
+    ResponseEmbeddedTermineInnerAdresseKoordinaten,
 )
-from deutschland.weiterbildungssuche.model.response_embedded_adresse_ort_stra_e_land import (
-    ResponseEmbeddedAdresseOrtStraELand,
+from deutschland.weiterbildungssuche.model.response_embedded_termine_inner_adresse_ort_stra_e import (
+    ResponseEmbeddedTermineInnerAdresseOrtStraE,
 )
-from deutschland.weiterbildungssuche.model.response_embedded_angebot import (
-    ResponseEmbeddedAngebot,
+from deutschland.weiterbildungssuche.model.response_embedded_termine_inner_adresse_ort_stra_e_land import (
+    ResponseEmbeddedTermineInnerAdresseOrtStraELand,
 )
-from deutschland.weiterbildungssuche.model.response_embedded_ansprechpartner import (
-    ResponseEmbeddedAnsprechpartner,
+from deutschland.weiterbildungssuche.model.response_embedded_termine_inner_angebot import (
+    ResponseEmbeddedTermineInnerAngebot,
 )
-from deutschland.weiterbildungssuche.model.response_embedded_dauer import (
-    ResponseEmbeddedDauer,
+from deutschland.weiterbildungssuche.model.response_embedded_termine_inner_ansprechpartner_inner import (
+    ResponseEmbeddedTermineInnerAnsprechpartnerInner,
 )
-from deutschland.weiterbildungssuche.model.response_embedded_rollen import (
-    ResponseEmbeddedRollen,
+from deutschland.weiterbildungssuche.model.response_embedded_termine_inner_ansprechpartner_inner_rollen import (
+    ResponseEmbeddedTermineInnerAnsprechpartnerInnerRollen,
 )
-from deutschland.weiterbildungssuche.model.response_embedded_termine import (
-    ResponseEmbeddedTermine,
+from deutschland.weiterbildungssuche.model.response_embedded_termine_inner_dauer import (
+    ResponseEmbeddedTermineInnerDauer,
 )
-from deutschland.weiterbildungssuche.model.response_embedded_unterrichtsform import (
-    ResponseEmbeddedUnterrichtsform,
+from deutschland.weiterbildungssuche.model.response_embedded_termine_inner_unterrichtsform import (
+    ResponseEmbeddedTermineInnerUnterrichtsform,
 )
-from deutschland.weiterbildungssuche.model.response_embedded_unterrichtszeit import (
-    ResponseEmbeddedUnterrichtszeit,
+from deutschland.weiterbildungssuche.model.response_embedded_termine_inner_unterrichtszeit import (
+    ResponseEmbeddedTermineInnerUnterrichtszeit,
 )
 from deutschland.weiterbildungssuche.model.response_links import ResponseLinks
 from deutschland.weiterbildungssuche.model.response_links_first import (

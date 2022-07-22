@@ -48,6 +48,7 @@ class DefaultApi(object):
             },
             params_map={
                 "all": [
+                    "sys",
                     "sw",
                     "ort",
                     "page",
@@ -65,6 +66,7 @@ class DefaultApi(object):
                 "required": [],
                 "nullable": [],
                 "enum": [
+                    "sys",
                     "uk",
                     "re",
                     "bt",
@@ -78,6 +80,7 @@ class DefaultApi(object):
             root_map={
                 "validations": {},
                 "allowed_values": {
+                    ("sys",): {"C": "C", "D": "D", "CD": "CD"},
                     ("uk",): {
                         "BUNDESWEIT": "Bundesweit",
                         "25": "25",
@@ -87,22 +90,28 @@ class DefaultApi(object):
                         "200": "200",
                     },
                     ("re",): {
-                        "BW": "BW",
-                        "BY": "BY",
-                        "BE": "BE",
-                        "BB": "BB",
-                        "HB": "HB",
-                        "HH": "HH",
-                        "HE": "HE",
-                        "MV": "MV",
-                        "NI": "NI",
-                        "NW": "NW",
-                        "RP": "RP",
-                        "SL": "SL",
-                        "SN": "SN",
-                        "ST": "ST",
-                        "SH": "SH",
-                        "TH": "TH",
+                        "BAW": "BAW",
+                        "BAY": "BAY",
+                        "BER": "BER",
+                        "BRA": "BRA",
+                        "BRE": "BRE",
+                        "HAM": "HAM",
+                        "HES": "HES",
+                        "MBV": "MBV",
+                        "NDS": "NDS",
+                        "NRW": "NRW",
+                        "RPF": "RPF",
+                        "SAA": "SAA",
+                        "SAC": "SAC",
+                        "SAN": "SAN",
+                        "SLH": "SLH",
+                        "TH%C3%9C": "TH%C3%9C",
+                        "-": "-",
+                        "IGB": "iGB",
+                        "IP": "iP",
+                        "ICH": "iCH",
+                        "IA": "iA",
+                        "IE": "iE",
                     },
                     ("bt",): {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5},
                     ("uz",): {"1": 1, "2": 2},
@@ -140,6 +149,7 @@ class DefaultApi(object):
                     ("it",): {"RC": "RC", "RD": "RD"},
                 },
                 "openapi_types": {
+                    "sys": (str,),
                     "sw": (str,),
                     "ort": (str,),
                     "page": (int,),
@@ -155,6 +165,7 @@ class DefaultApi(object):
                     "bg": (bool,),
                 },
                 "attribute_map": {
+                    "sys": "sys",
                     "sw": "sw",
                     "ort": "ort",
                     "page": "page",
@@ -170,6 +181,7 @@ class DefaultApi(object):
                     "bg": "bg",
                 },
                 "location_map": {
+                    "sys": "query",
                     "sw": "query",
                     "ort": "query",
                     "page": "query",
@@ -205,12 +217,13 @@ class DefaultApi(object):
 
 
         Keyword Args:
+            sys (str): Systematik - C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiksuche.. [optional]
             sw (str): Suchwort. [optional]
             ort (str): Ortsangabe nebst Postleitzahl und Koordinaten. [optional]
             page (int): Ergebnissseite. [optional]
             size (int): Anzahl von Ergebnissen. [optional]
             uk (str): Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.. [optional]
-            re (str): Region/Bundesland - BW=Baden-Württemberg, BY=Bayern, BE=Berlin, BB=Brandenburg, HB=Bremen, HH=Hamburg, HE=Hessen, MV=Mecklenburg-Vorpommern, NI=Niedersachsen, NW=Nordrhei-Westfalen, RP=Rheinland-Pfalz, SL=Saarland, SN=Sachsen, ST=Sachsen-Anhalt, SH=Schleswig-Holstein, TH=Thüringen. Mehrere Komma-getrennte Angaben möglich.. [optional]
+            re (str): BAW=Baden-Württemberg, BAY=Bayern, BER=Berlin, BRA=Brandenburg, BRE=Bremen, HAM=Hamburg, HES=Hessen, MBV=Mecklenburg-Vorpommern, NDS=Niedersachsen, NRW=Nordrhein-Westfalen, RPF=Rheinland-Pfalz, SAA=Saarland, SAC=Sachsen, SAN=Sachsen-Anhalt, SLH=Schleswig-Holstein, TH%C3%9C=Thüringen, -=überregional, iGB=Großbritannien, iP=Portugal, iCH=Schweiz, iA=Österreich, iE=Spanien. Mehrere Komma-getrennte Angaben möglich (z.B. re=TH%C3%9C,BAW).. [optional]
             bt (int): Beginntermin - 0=regelmäßiger Start, 1=diesen Monat, 2=Folgemonat, 3=in zwei Monaten, 4=in drei Monaten, 5=in mehr als drei Monaten. [optional]
             uz (int): Unterrichtszeit - 1=Vollzeit, 2=Teilzeit. Mehrere Komma-getrennte Angaben möglich.. [optional]
             dauer (int): Dauer - 0=Auf Anfrage, 1,2=bis eine Woche, 1,2,3=bis ein Monat, 1,2,3,4=bis drei Monate, 1,2,3,4,5=bis sechs Monate, 1,2,3,4,5,6=bis ein Jahr, 7,8,9=mehr als ein Jahr. Mehrere Komma-getrennte Angaben sind die Regel.. [optional]

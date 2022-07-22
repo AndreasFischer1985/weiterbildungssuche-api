@@ -68,90 +68,90 @@ weiterbildungssuche.model.response\_embedded module
    :undoc-members:
    :show-inheritance:
 
-weiterbildungssuche.model.response\_embedded\_adresse module
-------------------------------------------------------------
+weiterbildungssuche.model.response\_embedded\_termine\_inner module
+-------------------------------------------------------------------
 
-.. automodule:: weiterbildungssuche.model.response_embedded_adresse
+.. automodule:: weiterbildungssuche.model.response_embedded_termine_inner
    :members:
    :undoc-members:
    :show-inheritance:
 
-weiterbildungssuche.model.response\_embedded\_adresse\_koordinaten module
--------------------------------------------------------------------------
+weiterbildungssuche.model.response\_embedded\_termine\_inner\_adresse module
+----------------------------------------------------------------------------
 
-.. automodule:: weiterbildungssuche.model.response_embedded_adresse_koordinaten
+.. automodule:: weiterbildungssuche.model.response_embedded_termine_inner_adresse
    :members:
    :undoc-members:
    :show-inheritance:
 
-weiterbildungssuche.model.response\_embedded\_adresse\_ort\_stra\_e module
+weiterbildungssuche.model.response\_embedded\_termine\_inner\_adresse\_koordinaten module
+-----------------------------------------------------------------------------------------
+
+.. automodule:: weiterbildungssuche.model.response_embedded_termine_inner_adresse_koordinaten
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+weiterbildungssuche.model.response\_embedded\_termine\_inner\_adresse\_ort\_stra\_e module
+------------------------------------------------------------------------------------------
+
+.. automodule:: weiterbildungssuche.model.response_embedded_termine_inner_adresse_ort_stra_e
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+weiterbildungssuche.model.response\_embedded\_termine\_inner\_adresse\_ort\_stra\_e\_land module
+------------------------------------------------------------------------------------------------
+
+.. automodule:: weiterbildungssuche.model.response_embedded_termine_inner_adresse_ort_stra_e_land
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+weiterbildungssuche.model.response\_embedded\_termine\_inner\_angebot module
+----------------------------------------------------------------------------
+
+.. automodule:: weiterbildungssuche.model.response_embedded_termine_inner_angebot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+weiterbildungssuche.model.response\_embedded\_termine\_inner\_ansprechpartner\_inner module
+-------------------------------------------------------------------------------------------
+
+.. automodule:: weiterbildungssuche.model.response_embedded_termine_inner_ansprechpartner_inner
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+weiterbildungssuche.model.response\_embedded\_termine\_inner\_ansprechpartner\_inner\_rollen module
+---------------------------------------------------------------------------------------------------
+
+.. automodule:: weiterbildungssuche.model.response_embedded_termine_inner_ansprechpartner_inner_rollen
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+weiterbildungssuche.model.response\_embedded\_termine\_inner\_dauer module
 --------------------------------------------------------------------------
 
-.. automodule:: weiterbildungssuche.model.response_embedded_adresse_ort_stra_e
+.. automodule:: weiterbildungssuche.model.response_embedded_termine_inner_dauer
    :members:
    :undoc-members:
    :show-inheritance:
 
-weiterbildungssuche.model.response\_embedded\_adresse\_ort\_stra\_e\_land module
---------------------------------------------------------------------------------
+weiterbildungssuche.model.response\_embedded\_termine\_inner\_unterrichtsform module
+------------------------------------------------------------------------------------
 
-.. automodule:: weiterbildungssuche.model.response_embedded_adresse_ort_stra_e_land
+.. automodule:: weiterbildungssuche.model.response_embedded_termine_inner_unterrichtsform
    :members:
    :undoc-members:
    :show-inheritance:
 
-weiterbildungssuche.model.response\_embedded\_angebot module
-------------------------------------------------------------
+weiterbildungssuche.model.response\_embedded\_termine\_inner\_unterrichtszeit module
+------------------------------------------------------------------------------------
 
-.. automodule:: weiterbildungssuche.model.response_embedded_angebot
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-weiterbildungssuche.model.response\_embedded\_ansprechpartner module
---------------------------------------------------------------------
-
-.. automodule:: weiterbildungssuche.model.response_embedded_ansprechpartner
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-weiterbildungssuche.model.response\_embedded\_dauer module
-----------------------------------------------------------
-
-.. automodule:: weiterbildungssuche.model.response_embedded_dauer
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-weiterbildungssuche.model.response\_embedded\_rollen module
------------------------------------------------------------
-
-.. automodule:: weiterbildungssuche.model.response_embedded_rollen
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-weiterbildungssuche.model.response\_embedded\_termine module
-------------------------------------------------------------
-
-.. automodule:: weiterbildungssuche.model.response_embedded_termine
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-weiterbildungssuche.model.response\_embedded\_unterrichtsform module
---------------------------------------------------------------------
-
-.. automodule:: weiterbildungssuche.model.response_embedded_unterrichtsform
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-weiterbildungssuche.model.response\_embedded\_unterrichtszeit module
---------------------------------------------------------------------
-
-.. automodule:: weiterbildungssuche.model.response_embedded_unterrichtszeit
+.. automodule:: weiterbildungssuche.model.response_embedded_termine_inner_unterrichtszeit
    :members:
    :undoc-members:
    :show-inheritance:
