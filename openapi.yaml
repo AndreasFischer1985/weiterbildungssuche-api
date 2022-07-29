@@ -59,7 +59,7 @@ paths:
           name: ort
           schema:
             type: string
-          description: Ortsangabe nebst Postleitzahl und Koordinaten
+          description: Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt.
           example: "Feucht_90537_11.224918_49.376701"
           required: false
 
