@@ -49,7 +49,7 @@ Suchwort (z.B. IT-Security%2520-%2520allgemein)
 
 **Parameter:** *ort*  (Optional)
 
-Ortsangabe nebst Postleitzahl und Koordinaten (z.B. Feucht_90537_11.224918_49.376701)
+Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt (z.B. Feucht_90537_11.224918_49.376701)
 
 
 **Parameter:** *page* (Optional)
