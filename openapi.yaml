@@ -197,7 +197,7 @@ paths:
           required: false
 
         - in: query
-          name: anbieter
+          name: ban
           schema:
             type: integer
           description: Anbieter-ID
