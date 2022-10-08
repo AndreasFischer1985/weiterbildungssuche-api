@@ -36,6 +36,22 @@ paths:
       parameters:
 
         - in: query
+          name: page
+          schema:
+            type: integer
+          description: Ergebnissseite
+          example: 1
+          required: false
+
+        - in: query
+          name: size
+          schema:
+            type: integer
+          example: 50
+          description: Anzahl von Ergebnissen pro Seite(maximal 2000). Insgesamt werden über alle Seiten hinweg maximal 10000 Ergebnisse angezeigt.
+          required: false
+          
+        - in: query
           name: sys
           schema:
             type: string
@@ -61,22 +77,6 @@ paths:
             type: string
           description: Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt.
           example: "Feucht_90537_11.224918_49.376701"
-          required: false
-
-        - in: query
-          name: page
-          schema:
-            type: integer
-          description: Ergebnissseite
-          example: 1
-          required: false
-
-        - in: query
-          name: size
-          schema:
-            type: integer
-          example: 50
-          description: Anzahl von Ergebnissen
           required: false
 
         - in: query
