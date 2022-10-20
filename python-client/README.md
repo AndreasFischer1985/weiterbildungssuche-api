@@ -83,24 +83,24 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with weiterbildungssuche.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
+    page = 1 # int | Ergebnissseite (optional)
+    size = 50 # int | Anzahl von Ergebnissen pro Seite(maximal 2000). Insgesamt werden über alle Seiten hinweg maximal 10000 Ergebnisse angezeigt. (optional)
     sys = "C" # str | Systematik - C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiksuche. (optional)
     sw = "IT-Security%2520-%2520allgemein" # str | Suchwort (optional)
-    ort = "Feucht_90537_11.224918_49.376701" # str | Ortsangabe nebst Postleitzahl und Koordinaten (optional)
-    page = 1 # int | Ergebnissseite (optional)
-    size = 50 # int | Anzahl von Ergebnissen (optional)
+    ort = "Feucht_90537_11.224918_49.376701" # str | Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt. (optional)
     uk = "Bundesweit" # str | Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km. (optional)
     re = "BAY" # str | BAW=Baden-Württemberg, BAY=Bayern, BER=Berlin, BRA=Brandenburg, BRE=Bremen, HAM=Hamburg, HES=Hessen, MBV=Mecklenburg-Vorpommern, NDS=Niedersachsen, NRW=Nordrhein-Westfalen, RPF=Rheinland-Pfalz, SAA=Saarland, SAC=Sachsen, SAN=Sachsen-Anhalt, SLH=Schleswig-Holstein, TH%C3%9C=Thüringen, -=überregional, iGB=Großbritannien, iP=Portugal, iCH=Schweiz, iA=Österreich, iE=Spanien. Mehrere Komma-getrennte Angaben möglich (z.B. re=TH%C3%9C,BAW). (optional)
     bt = 0 # int | Beginntermin - 0=regelmäßiger Start, 1=diesen Monat, 2=Folgemonat, 3=in zwei Monaten, 4=in drei Monaten, 5=in mehr als drei Monaten (optional)
     uz = 1 # int | Unterrichtszeit - 1=Vollzeit, 2=Teilzeit. Mehrere Komma-getrennte Angaben möglich. (optional)
     dauer = 0 # int | Dauer - 0=Auf Anfrage, 1,2=bis eine Woche, 1,2,3=bis ein Monat, 1,2,3,4=bis drei Monate, 1,2,3,4,5=bis sechs Monate, 1,2,3,4,5,6=bis ein Jahr, 7,8,9=mehr als ein Jahr. Mehrere Komma-getrennte Angaben sind die Regel. (optional)
     uf = 101 # int | Unterrichtsform. 101=Präsenzveranstaltung, 102=Seminar, 103=Workshop, 104=Praxistraining, 105=Sonstige Präsenzveranstaltung, 201=Virtuelles Klassenzimmer, 202=Online-Seminar, 203=Online-Coaching, 204=Selbstlernmodul, 206=Sonstige digitale Lernformen, 301=Blended Learning, 302=Combined Learning, 303=Hybrid Learning, 304=Sonstige kombinierte Lernformen,401=Fernunterricht, 402=Fernlehrgang, 403=Sonstiger Fernunterricht. Mehrere Komma-getrennte Angaben möglich (z.B. uf=101,202). (optional)
-    anbieter = 22210 # int | Anbieter-ID (optional)
+    ban = 22210 # int | Anbieter-ID (optional)
     it = "RC" # str | Integrationstyp - RC=Ausbildung Reha, RD=weiterbildung Reha. Mehrere Komma-getrennte Angaben möglich. (optional)
     bg = True # bool | Bildungsgutschein - true=nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen, false=nicht nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen. (optional)
 
     try:
         # Weiterbildungssuche
-        api_response = api_instance.weiterbildungssuche(sys=sys, sw=sw, ort=ort, page=page, size=size, uk=uk, re=re, bt=bt, uz=uz, dauer=dauer, uf=uf, anbieter=anbieter, it=it, bg=bg)
+        api_response = api_instance.weiterbildungssuche(page=page, size=size, sys=sys, sw=sw, ort=ort, uk=uk, re=re, bt=bt, uz=uz, dauer=dauer, uf=uf, ban=ban, it=it, bg=bg)
         pprint(api_response)
     except weiterbildungssuche.ApiException as e:
         print("Exception when calling DefaultApi->weiterbildungssuche: %s\n" % e)

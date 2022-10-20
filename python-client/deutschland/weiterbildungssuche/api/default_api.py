@@ -48,18 +48,18 @@ class DefaultApi(object):
             },
             params_map={
                 "all": [
+                    "page",
+                    "size",
                     "sys",
                     "sw",
                     "ort",
-                    "page",
-                    "size",
                     "uk",
                     "re",
                     "bt",
                     "uz",
                     "dauer",
                     "uf",
-                    "anbieter",
+                    "ban",
                     "it",
                     "bg",
                 ],
@@ -149,50 +149,50 @@ class DefaultApi(object):
                     ("it",): {"RC": "RC", "RD": "RD"},
                 },
                 "openapi_types": {
+                    "page": (int,),
+                    "size": (int,),
                     "sys": (str,),
                     "sw": (str,),
                     "ort": (str,),
-                    "page": (int,),
-                    "size": (int,),
                     "uk": (str,),
                     "re": (str,),
                     "bt": (int,),
                     "uz": (int,),
                     "dauer": (int,),
                     "uf": (int,),
-                    "anbieter": (int,),
+                    "ban": (int,),
                     "it": (str,),
                     "bg": (bool,),
                 },
                 "attribute_map": {
+                    "page": "page",
+                    "size": "size",
                     "sys": "sys",
                     "sw": "sw",
                     "ort": "ort",
-                    "page": "page",
-                    "size": "size",
                     "uk": "uk",
                     "re": "re",
                     "bt": "bt",
                     "uz": "uz",
                     "dauer": "dauer",
                     "uf": "uf",
-                    "anbieter": "anbieter",
+                    "ban": "ban",
                     "it": "it",
                     "bg": "bg",
                 },
                 "location_map": {
+                    "page": "query",
+                    "size": "query",
                     "sys": "query",
                     "sw": "query",
                     "ort": "query",
-                    "page": "query",
-                    "size": "query",
                     "uk": "query",
                     "re": "query",
                     "bt": "query",
                     "uz": "query",
                     "dauer": "query",
                     "uf": "query",
-                    "anbieter": "query",
+                    "ban": "query",
                     "it": "query",
                     "bg": "query",
                 },
@@ -217,18 +217,18 @@ class DefaultApi(object):
 
 
         Keyword Args:
+            page (int): Ergebnissseite. [optional]
+            size (int): Anzahl von Ergebnissen pro Seite(maximal 2000). Insgesamt werden über alle Seiten hinweg maximal 10000 Ergebnisse angezeigt.. [optional]
             sys (str): Systematik - C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiksuche.. [optional]
             sw (str): Suchwort. [optional]
-            ort (str): Ortsangabe nebst Postleitzahl und Koordinaten. [optional]
-            page (int): Ergebnissseite. [optional]
-            size (int): Anzahl von Ergebnissen. [optional]
+            ort (str): Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt.. [optional]
             uk (str): Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.. [optional]
             re (str): BAW=Baden-Württemberg, BAY=Bayern, BER=Berlin, BRA=Brandenburg, BRE=Bremen, HAM=Hamburg, HES=Hessen, MBV=Mecklenburg-Vorpommern, NDS=Niedersachsen, NRW=Nordrhein-Westfalen, RPF=Rheinland-Pfalz, SAA=Saarland, SAC=Sachsen, SAN=Sachsen-Anhalt, SLH=Schleswig-Holstein, TH%C3%9C=Thüringen, -=überregional, iGB=Großbritannien, iP=Portugal, iCH=Schweiz, iA=Österreich, iE=Spanien. Mehrere Komma-getrennte Angaben möglich (z.B. re=TH%C3%9C,BAW).. [optional]
             bt (int): Beginntermin - 0=regelmäßiger Start, 1=diesen Monat, 2=Folgemonat, 3=in zwei Monaten, 4=in drei Monaten, 5=in mehr als drei Monaten. [optional]
             uz (int): Unterrichtszeit - 1=Vollzeit, 2=Teilzeit. Mehrere Komma-getrennte Angaben möglich.. [optional]
             dauer (int): Dauer - 0=Auf Anfrage, 1,2=bis eine Woche, 1,2,3=bis ein Monat, 1,2,3,4=bis drei Monate, 1,2,3,4,5=bis sechs Monate, 1,2,3,4,5,6=bis ein Jahr, 7,8,9=mehr als ein Jahr. Mehrere Komma-getrennte Angaben sind die Regel.. [optional]
             uf (int): Unterrichtsform. 101=Präsenzveranstaltung, 102=Seminar, 103=Workshop, 104=Praxistraining, 105=Sonstige Präsenzveranstaltung, 201=Virtuelles Klassenzimmer, 202=Online-Seminar, 203=Online-Coaching, 204=Selbstlernmodul, 206=Sonstige digitale Lernformen, 301=Blended Learning, 302=Combined Learning, 303=Hybrid Learning, 304=Sonstige kombinierte Lernformen,401=Fernunterricht, 402=Fernlehrgang, 403=Sonstiger Fernunterricht. Mehrere Komma-getrennte Angaben möglich (z.B. uf=101,202).. [optional]
-            anbieter (int): Anbieter-ID. [optional]
+            ban (int): Anbieter-ID. [optional]
             it (str): Integrationstyp - RC=Ausbildung Reha, RD=weiterbildung Reha. Mehrere Komma-getrennte Angaben möglich.. [optional]
             bg (bool): Bildungsgutschein - true=nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen, false=nicht nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen.. [optional]
             _return_http_data_only (bool): response data without head status
