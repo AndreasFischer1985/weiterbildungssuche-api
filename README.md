@@ -64,13 +64,22 @@ Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils d
 
 **Parameter:** *uk* (Optional)
 - Bundesweit
+- ort
 - 25
 - 50
 - 100
 - 150
 - 200
 
-Umkreis:  Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.
+Umkreis:  Bundesweit=Bundesweit, ort=nur angegebener Ort, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.
+
+
+**Parameter:** *ortsunabhaengig* (Optional)
+- true
+- false
+
+auch Orts-unabhängige Angebote einblenden (nur wirksam bei Setzung von Parameter ort).
+
 
 **Parameter:** *re*  (Optional)
 - BAW
