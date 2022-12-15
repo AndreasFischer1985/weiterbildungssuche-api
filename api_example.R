@@ -17,3 +17,8 @@ data_request=httr::GET(url=url, httr::add_headers(.headers=c("OAuthAccessToken"=
 data=jsonlite::fromJSON(rawToChar(httr::content(data_request)))
 
 writeLines(jsonlite::toJSON(data$aggregations,pretty=TRUE,auto_unbox=TRUE),paste0(Sys.Date(),"_wbsuche_aggregations.json"))
+
+f=paste0(Sys.Date(),"_wbsuche.json")
+writeLines(jsonlite::toJSON(data,pretty=TRUE,auto_unbox=TRUE),f)
+x=jsonlite::fromJSON(paste(readLines(f,encoding="UTF-8"),collapse="\n"));
+
