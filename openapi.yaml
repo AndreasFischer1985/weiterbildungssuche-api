@@ -68,7 +68,15 @@ paths:
           schema:
             type: string
           description: Suchwort 
-          example: "IT-Security%2520-%2520allgemein"
+          example: "Teilqualifikation"
+          required: false
+
+        - in: query
+          name: ssw
+          schema:
+            type: string
+          description: selektierteSternchenSuchworte (unvollständige Suchworte, z.B. Teilqualifi; pot. mehrere, durch Kommata getrennt).
+          example: "Teilquali"
           required: false
 
         - in: query

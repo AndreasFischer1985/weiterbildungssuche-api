@@ -54,7 +54,12 @@ Systematik: C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiks
 
 **Parameter:** *sw*  (Optional)
 
-Suchwort (z.B. IT-Security%2520-%2520allgemein)
+Suchwort (z.B. Teilqualifikation)
+
+
+**Parameter:** *ssw*  (Optional)
+
+selektierteSternchenSuchworte (unvollständige Suchworte, z.B. Teilqualifi; pot. mehrere, durch Kommata getrennt).
 
 
 **Parameter:** *ort*  (Optional)
