@@ -86,7 +86,8 @@ with weiterbildungssuche.ApiClient(configuration) as api_client:
     page = 1 # int | Ergebnissseite (optional)
     size = 50 # int | Anzahl von Ergebnissen pro Seite(maximal 2000). Insgesamt werden über alle Seiten hinweg maximal 10000 Ergebnisse angezeigt. (optional)
     sys = "C" # str | Systematik - C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiksuche. (optional)
-    sw = "IT-Security%2520-%2520allgemein" # str | Suchwort (optional)
+    sw = "Teilqualifikation" # str | Suchwort (optional)
+    ssw = "Teilquali" # str | selektierteSternchenSuchworte (unvollständige Suchworte, z.B. Teilqualifi; pot. mehrere, durch Kommata getrennt). (optional)
     ort = "Feucht_90537_11.224918_49.376701" # str | Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt. (optional)
     uk = "Bundesweit" # str | Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km. (optional)
     re = "BAY" # str | BAW=Baden-Württemberg, BAY=Bayern, BER=Berlin, BRA=Brandenburg, BRE=Bremen, HAM=Hamburg, HES=Hessen, MBV=Mecklenburg-Vorpommern, NDS=Niedersachsen, NRW=Nordrhein-Westfalen, RPF=Rheinland-Pfalz, SAA=Saarland, SAC=Sachsen, SAN=Sachsen-Anhalt, SLH=Schleswig-Holstein, TH%C3%9C=Thüringen, -=überregional, iGB=Großbritannien, iP=Portugal, iCH=Schweiz, iA=Österreich, iE=Spanien. Mehrere Komma-getrennte Angaben möglich (z.B. re=TH%C3%9C,BAW). (optional)
@@ -100,7 +101,7 @@ with weiterbildungssuche.ApiClient(configuration) as api_client:
 
     try:
         # Weiterbildungssuche
-        api_response = api_instance.weiterbildungssuche(page=page, size=size, sys=sys, sw=sw, ort=ort, uk=uk, re=re, bt=bt, uz=uz, dauer=dauer, uf=uf, ban=ban, it=it, bg=bg)
+        api_response = api_instance.weiterbildungssuche(page=page, size=size, sys=sys, sw=sw, ssw=ssw, ort=ort, uk=uk, re=re, bt=bt, uz=uz, dauer=dauer, uf=uf, ban=ban, it=it, bg=bg)
         pprint(api_response)
     except weiterbildungssuche.ApiException as e:
         print("Exception when calling DefaultApi->weiterbildungssuche: %s\n" % e)
