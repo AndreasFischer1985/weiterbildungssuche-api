@@ -62,9 +62,9 @@ Suchwort (z.B. Teilqualifikation)
 selektierteSternchenSuchworte (unvollständige Suchworte, z.B. Teilqualifi; pot. mehrere, durch Kommata getrennt).
 
 
-**Parameter:** *ort*  (Optional)
+**Parameter:** *orte*  (Optional)
 
-Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt (z.B. Feucht_90537_11.224918_49.376701)
+Ortsangabe nebst Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt (z.B. Erlangen_11.005_49.595)
 
 
 **Parameter:** *uk* (Optional)
@@ -187,5 +187,5 @@ Bildungsgutschein: true=nur Angebote mit Zulassung zur Förderung mit Bildungsgu
 ```bash
 wb=$(curl -m 60 \
 -H "OAuthAccessToken: $token" \
-'https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot?orte=Feucht_90537_11.224918_49.376701&uk=Bundesweit&bg=false&page=0')
+'https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot?orte=Erlangen_11.005_49.595&uk=Bundesweit&bg=false&page=0')
 ```
