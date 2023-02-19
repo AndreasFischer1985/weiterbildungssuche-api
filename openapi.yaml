@@ -80,11 +80,11 @@ paths:
           required: false
 
         - in: query
-          name: ort
+          name: orte
           schema:
             type: string
-          description: Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt.
-          example: "Feucht_90537_11.224918_49.376701"
+          description: Ortsangabe nebst und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt.
+          example: "Erlangen_11.005_49.595"
           required: false
 
         - in: query

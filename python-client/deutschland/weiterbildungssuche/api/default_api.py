@@ -52,7 +52,8 @@ class DefaultApi(object):
                     "size",
                     "sys",
                     "sw",
-                    "ort",
+                    "ssw",
+                    "orte",
                     "uk",
                     "re",
                     "bt",
@@ -153,7 +154,8 @@ class DefaultApi(object):
                     "size": (int,),
                     "sys": (str,),
                     "sw": (str,),
-                    "ort": (str,),
+                    "ssw": (str,),
+                    "orte": (str,),
                     "uk": (str,),
                     "re": (str,),
                     "bt": (int,),
@@ -169,7 +171,8 @@ class DefaultApi(object):
                     "size": "size",
                     "sys": "sys",
                     "sw": "sw",
-                    "ort": "ort",
+                    "ssw": "ssw",
+                    "orte": "orte",
                     "uk": "uk",
                     "re": "re",
                     "bt": "bt",
@@ -185,7 +188,8 @@ class DefaultApi(object):
                     "size": "query",
                     "sys": "query",
                     "sw": "query",
-                    "ort": "query",
+                    "ssw": "query",
+                    "orte": "query",
                     "uk": "query",
                     "re": "query",
                     "bt": "query",
@@ -221,7 +225,8 @@ class DefaultApi(object):
             size (int): Anzahl von Ergebnissen pro Seite(maximal 2000). Insgesamt werden über alle Seiten hinweg maximal 10000 Ergebnisse angezeigt.. [optional]
             sys (str): Systematik - C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiksuche.. [optional]
             sw (str): Suchwort. [optional]
-            ort (str): Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt.. [optional]
+            ssw (str): selektierteSternchenSuchworte (unvollständige Suchworte, z.B. Teilqualifi; pot. mehrere, durch Kommata getrennt).. [optional]
+            orte (str): Ortsangabe nebst und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt.. [optional]
             uk (str): Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.. [optional]
             re (str): BAW=Baden-Württemberg, BAY=Bayern, BER=Berlin, BRA=Brandenburg, BRE=Bremen, HAM=Hamburg, HES=Hessen, MBV=Mecklenburg-Vorpommern, NDS=Niedersachsen, NRW=Nordrhein-Westfalen, RPF=Rheinland-Pfalz, SAA=Saarland, SAC=Sachsen, SAN=Sachsen-Anhalt, SLH=Schleswig-Holstein, TH%C3%9C=Thüringen, -=überregional, iGB=Großbritannien, iP=Portugal, iCH=Schweiz, iA=Österreich, iE=Spanien. Mehrere Komma-getrennte Angaben möglich (z.B. re=TH%C3%9C,BAW).. [optional]
             bt (int): Beginntermin - 0=regelmäßiger Start, 1=diesen Monat, 2=Folgemonat, 3=in zwei Monaten, 4=in drei Monaten, 5=in mehr als drei Monaten. [optional]
