@@ -50,7 +50,7 @@ with weiterbildungssuche.ApiClient(configuration) as api_client:
     sys = "C" # str | Systematik - C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiksuche. (optional)
     sw = "Teilqualifikation" # str | Suchwort (optional)
     ssw = "Teilquali" # str | selektierteSternchenSuchworte (unvollständige Suchworte, z.B. Teilqualifi; pot. mehrere, durch Kommata getrennt). (optional)
-    ort = "Feucht_90537_11.224918_49.376701" # str | Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt. (optional)
+    orte = "Erlangen_11.005_49.595" # str | Ortsangabe nebst und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt. (optional)
     uk = "Bundesweit" # str | Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km. (optional)
     re = "BAY" # str | BAW=Baden-Württemberg, BAY=Bayern, BER=Berlin, BRA=Brandenburg, BRE=Bremen, HAM=Hamburg, HES=Hessen, MBV=Mecklenburg-Vorpommern, NDS=Niedersachsen, NRW=Nordrhein-Westfalen, RPF=Rheinland-Pfalz, SAA=Saarland, SAC=Sachsen, SAN=Sachsen-Anhalt, SLH=Schleswig-Holstein, TH%C3%9C=Thüringen, -=überregional, iGB=Großbritannien, iP=Portugal, iCH=Schweiz, iA=Österreich, iE=Spanien. Mehrere Komma-getrennte Angaben möglich (z.B. re=TH%C3%9C,BAW). (optional)
     bt = 0 # int | Beginntermin - 0=regelmäßiger Start, 1=diesen Monat, 2=Folgemonat, 3=in zwei Monaten, 4=in drei Monaten, 5=in mehr als drei Monaten (optional)
@@ -65,7 +65,7 @@ with weiterbildungssuche.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Weiterbildungssuche
-        api_response = api_instance.weiterbildungssuche(page=page, size=size, sys=sys, sw=sw, ssw=ssw, ort=ort, uk=uk, re=re, bt=bt, uz=uz, dauer=dauer, uf=uf, ban=ban, it=it, bg=bg)
+        api_response = api_instance.weiterbildungssuche(page=page, size=size, sys=sys, sw=sw, ssw=ssw, orte=orte, uk=uk, re=re, bt=bt, uz=uz, dauer=dauer, uf=uf, ban=ban, it=it, bg=bg)
         pprint(api_response)
     except weiterbildungssuche.ApiException as e:
         print("Exception when calling DefaultApi->weiterbildungssuche: %s\n" % e)
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
  **sys** | **str**| Systematik - C&#x3D;Berufliche Qualifikation, D&#x3D;Aufstiegsweiterbildung, CD&#x3D;Systematiksuche. | [optional]
  **sw** | **str**| Suchwort | [optional]
  **ssw** | **str**| selektierteSternchenSuchworte (unvollständige Suchworte, z.B. Teilqualifi; pot. mehrere, durch Kommata getrennt). | [optional]
- **ort** | **str**| Ortsangabe nebst Postleitzahl und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt. | [optional]
+ **orte** | **str**| Ortsangabe nebst und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt. | [optional]
  **uk** | **str**| Umkreis - Bundesweit&#x3D;Bundesweit, 25&#x3D;25 km, 50&#x3D;50 km, 100&#x3D;100 km, 150&#x3D;150 km, 200&#x3D;200 km. | [optional]
  **re** | **str**| BAW&#x3D;Baden-Württemberg, BAY&#x3D;Bayern, BER&#x3D;Berlin, BRA&#x3D;Brandenburg, BRE&#x3D;Bremen, HAM&#x3D;Hamburg, HES&#x3D;Hessen, MBV&#x3D;Mecklenburg-Vorpommern, NDS&#x3D;Niedersachsen, NRW&#x3D;Nordrhein-Westfalen, RPF&#x3D;Rheinland-Pfalz, SAA&#x3D;Saarland, SAC&#x3D;Sachsen, SAN&#x3D;Sachsen-Anhalt, SLH&#x3D;Schleswig-Holstein, TH%C3%9C&#x3D;Thüringen, -&#x3D;überregional, iGB&#x3D;Großbritannien, iP&#x3D;Portugal, iCH&#x3D;Schweiz, iA&#x3D;Österreich, iE&#x3D;Spanien. Mehrere Komma-getrennte Angaben möglich (z.B. re&#x3D;TH%C3%9C,BAW). | [optional]
  **bt** | **int**| Beginntermin - 0&#x3D;regelmäßiger Start, 1&#x3D;diesen Monat, 2&#x3D;Folgemonat, 3&#x3D;in zwei Monaten, 4&#x3D;in drei Monaten, 5&#x3D;in mehr als drei Monaten | [optional]
