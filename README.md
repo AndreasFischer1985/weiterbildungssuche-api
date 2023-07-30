@@ -62,6 +62,11 @@ Suchwort (z.B. Teilqualifikation)
 selektierteSternchenSuchworte (unvollständige Suchworte, z.B. Teilqualifi; pot. mehrere, durch Kommata getrennt).
 
 
+Parameter: ids (Optional)
+
+Berufs-ID einer Berufsbezeichnung (z.B. 6133 für Industriemeister/in - Lebensmittel). Mehrere Komma-getrennte Angaben möglich.
+
+
 **Parameter:** *orte*  (Optional)
 
 Ortsangabe nebst Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt (z.B. Erlangen_11.005_49.595)

@@ -80,6 +80,14 @@ paths:
           required: false
 
         - in: query
+          name: ids
+          schema:
+            type: integer
+          description: Berufs-ID einer Berufsbezeichnung (z.B. 6133 für Industriemeister/in - Lebensmittel). Mehrere Komma-getrennte Angaben möglich.
+          example: 6144
+          required: false
+
+        - in: query
           name: orte
           schema:
             type: string
