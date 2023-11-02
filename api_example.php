@@ -22,7 +22,7 @@ if(isset($_GET['token']) & $_GET['token']==='TRUE'){
 
     // GET-request:
     //-------------
-    $url = 'https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot?'.$_SERVER['QUERY_STRING'];
+    $url = 'https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v2/bildungsangebot?'.$_SERVER['QUERY_STRING'];
     $options = array(
         'http' => array(
             'header'  => "OAuthAccessToken:".json_decode($tokendata, true)['access_token']." \r\n",

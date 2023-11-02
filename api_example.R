@@ -11,7 +11,7 @@ token_request=httr::POST(
         body=postData,encode="form",
         config=httr::config(connecttimeout=60))
 token=httr::content(token_request, as='parsed')$access_token
-url="https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot?ssw=Teilquali&size=500"
+url="https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v2/bildungsangebot?ssw=Teilquali"
 data_request=httr::GET(url=url, httr::add_headers(.headers=c("OAuthAccessToken"=token)),
         config=httr::config(connecttimeout=60))
 data=jsonlite::fromJSON(rawToChar(httr::content(data_request)))
