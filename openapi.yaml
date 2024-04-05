@@ -1,19 +1,21 @@
+---
+
 openapi: "3.0.0"
 info:
   title: "Arbeitsagentur Weiterbildungssuche API"
   description: |
-   Eine der größten Weiterbildungsdatenbanken Deutschlands durchsuchen. 
-   
+   Eine der größten Weiterbildungsdatenbanken Deutschlands durchsuchen.
+
    Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs. Folgende Client-Credentials können dafür verwendet werden:
-   
+
    **ClientID:** 38053956-6618-4953-b670-b4ae7a2360b1
-   
-   **ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795. 
-   
+
+   **ClientSecret:** c385073c-3b97-42a9-b916-08fd8a5d1795.
+
     **Achtung**: der generierte Token muss bei folgenden GET-requests im header als *'OAuthAccessToken'* inkludiert werden. Alternativ kann man bei folgenden GET-requests auch direkt die neue *client_id* *22034dc9-ed09-4311-a6d8-749083d88fc6* als Header-Parameter *'X-API-Key'* übergeben - *'OAuthAccessToken'* ist in diesem Fall nicht erforderlich. 🚀
   version: "2.0.0"
   contact:
-    name:  "AndreasFischer1985"
+    name: "AndreasFischer1985"
     email: "andreasfischer1985@web.de"
     url: "https://github.com/AndreasFischer1985/weiterbildungssuche-api"
 
@@ -23,130 +25,130 @@ servers:
 paths:
   /pc/v1/bildungsangebot:
     get:
-      summary: Weiterbildungssuche
+      summary: "Weiterbildungssuche"
       description: "Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen GET-Parametern zu filtern."
-      operationId: weiterbildungssuche
+      operationId: "weiterbildungssuche"
       responses:
         '200':
-            description: OK
+          description: "OK"
 
       parameters:
 
-        - in: query
-          name: page
+        - in: "query"
+          name: "page"
           schema:
-            type: integer
-          description: Ergebnissseite
+            type: "integer"
+          description: "Ergebnissseite"
           example: 1
           required: false
-          
-        - in: query
-          name: sys
+
+        - in: "query"
+          name: "sys"
           schema:
-            type: string
+            type: "string"
             enum:
-                - C
-                - D
-                - CD
-          description: Systematik - C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiksuche.
+              - "C"
+              - "D"
+              - "CD"
+          description: "Systematik - C=Berufliche Qualifikation, D=Aufstiegsweiterbildung, CD=Systematiksuche."
           example: "C"
           required: false
 
-        - in: query
-          name: sw
+        - in: "query"
+          name: "sw"
           schema:
-            type: string
-          description: Suchwort 
+            type: "string"
+          description: "Suchwort"
           example: "Teilqualifikation"
           required: false
 
-        - in: query
-          name: ssw
+        - in: "query"
+          name: "ssw"
           schema:
-            type: string
-          description: selektierteSternchenSuchworte (unvollständige Suchworte, z.B. Teilqualifi; pot. mehrere, durch Kommata getrennt).
+            type: "string"
+          description: "selektierteSternchenSuchworte (unvollständige Suchworte, z.B. Teilqualifi; pot. mehrere, durch Kommata getrennt)."
           example: "Teilquali"
           required: false
 
-        - in: query
-          name: ids
+        - in: "query"
+          name: "ids"
           schema:
-            type: integer
-          description: Berufs-ID einer Berufsbezeichnung (z.B. 6133 für Industriemeister/in - Lebensmittel). Mehrere Komma-getrennte Angaben möglich.
+            type: "integer"
+          description: "Berufs-ID einer Berufsbezeichnung (z.B. 6133 für Industriemeister/in - Lebensmittel). Mehrere Komma-getrennte Angaben möglich."
           example: 6144
           required: false
 
-        - in: query
-          name: orte
+        - in: "query"
+          name: "orte"
           schema:
-            type: string
-          description: Ortsangabe nebst und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt.
+            type: "string"
+          description: "Ortsangabe nebst und Koordinaten (longitude und latitude) jeweils durch Unterstriche getrennt."
           example: "Erlangen_11.005_49.595"
           required: false
 
-        - in: query
-          name: uk
+        - in: "query"
+          name: "uk"
           schema:
-            type: string
+            type: "string"
             enum:
-                - Bundesweit
-                - 25
-                - 50
-                - 100
-                - 150
-                - 200
-          description: Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km.
+              - "Bundesweit"
+              - "25"
+              - "50"
+              - "100"
+              - "150"
+              - "200"
+          description: "Umkreis - Bundesweit=Bundesweit, 25=25 km, 50=50 km, 100=100 km, 150=150 km, 200=200 km."
           example: "Bundesweit"
           required: false
 
-        - in: query
-          name: re
+        - in: "query"
+          name: "re"
           schema:
-            type: string
+            type: "string"
             enum:
-                - BAW
-                - BAY
-                - BER
-                - BRA
-                - BRE
-                - HAM
-                - HES
-                - MBV
-                - NDS
-                - NRW
-                - RPF
-                - SAA
-                - SAC
-                - SAN
-                - SLH
-                - TH%C3%9C
-                - "-"
-                - iGB
-                - iP
-                - iCH
-                - iA
-                - iE
-          description: BAW=Baden-Württemberg, BAY=Bayern, BER=Berlin, BRA=Brandenburg, BRE=Bremen, HAM=Hamburg, HES=Hessen, MBV=Mecklenburg-Vorpommern, NDS=Niedersachsen, NRW=Nordrhein-Westfalen, RPF=Rheinland-Pfalz, SAA=Saarland, SAC=Sachsen, SAN=Sachsen-Anhalt, SLH=Schleswig-Holstein, TH%C3%9C=Thüringen, -=überregional, iGB=Großbritannien, iP=Portugal, iCH=Schweiz, iA=Österreich, iE=Spanien. Mehrere Komma-getrennte Angaben möglich (z.B. re=TH%C3%9C,BAW).
+              - "BAW"
+              - "BAY"
+              - "BER"
+              - "BRA"
+              - "BRE"
+              - "HAM"
+              - "HES"
+              - "MBV"
+              - "NDS"
+              - "NRW"
+              - "RPF"
+              - "SAA"
+              - "SAC"
+              - "SAN"
+              - "SLH"
+              - "TH%C3%9C"
+              - "-"
+              - "iGB"
+              - "iP"
+              - "iCH"
+              - "iA"
+              - "iE"
+          description: "BAW=Baden-Württemberg, BAY=Bayern, BER=Berlin, BRA=Brandenburg, BRE=Bremen, HAM=Hamburg, HES=Hessen, MBV=Mecklenburg-Vorpommern, NDS=Niedersachsen, NRW=Nordrhein-Westfalen, RPF=Rheinland-Pfalz, SAA=Saarland, SAC=Sachsen, SAN=Sachsen-Anhalt, SLH=Schleswig-Holstein, TH%C3%9C=Thüringen, -=überregional, iGB=Großbritannien, iP=Portugal, iCH=Schweiz, iA=Österreich, iE=Spanien. Mehrere Komma-getrennte Angaben möglich (z.B. re=TH%C3%9C,BAW)."
           example: "BAY"
           required: false
 
-        - in: query
-          name: bt
+        - in: "query"
+          name: "bt"
           schema:
             type: integer
             enum:
-                - 0
-                - 1
-                - 2
-                - 3
-                - 4
-                - 5
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
           example: 0
-          description: Beginntermin - 0=regelmäßiger Start, 1=diesen Monat, 2=Folgemonat, 3=in zwei Monaten, 4=in drei Monaten, 5=in mehr als drei Monaten
+          description: "Beginntermin - 0=regelmäßiger Start, 1=diesen Monat, 2=Folgemonat, 3=in zwei Monaten, 4=in drei Monaten, 5=in mehr als drei Monaten"
           required: false
 
-        - in: query
-          name: uz
+        - in: "query"
+          name: "uz"
           schema:
             type: integer
             enum:
@@ -154,10 +156,10 @@ paths:
               - 2
           example: 1
           required: false
-          description: Unterrichtszeit - 1=Vollzeit, 2=Teilzeit. Mehrere Komma-getrennte Angaben möglich.
+          description: "Unterrichtszeit - 1=Vollzeit, 2=Teilzeit. Mehrere Komma-getrennte Angaben möglich."
 
-        - in: query
-          name: dauer
+        - in: "query"
+          name: "dauer"
           schema:
             type: integer
             enum:
@@ -171,12 +173,12 @@ paths:
               - 8
               - 9
               - 0
-          description: Dauer - 0=Auf Anfrage, 1,2=bis eine Woche, 1,2,3=bis ein Monat, 1,2,3,4=bis drei Monate, 1,2,3,4,5=bis sechs Monate, 1,2,3,4,5,6=bis ein Jahr, 7,8,9=mehr als ein Jahr. Mehrere Komma-getrennte Angaben sind die Regel.
+          description: "Dauer - 0=Auf Anfrage, 1,2=bis eine Woche, 1,2,3=bis ein Monat, 1,2,3,4=bis drei Monate, 1,2,3,4,5=bis sechs Monate, 1,2,3,4,5,6=bis ein Jahr, 7,8,9=mehr als ein Jahr. Mehrere Komma-getrennte Angaben sind die Regel."
           example: 0
           required: false
 
-        - in: query
-          name: uf
+        - in: "query"
+          name: "uf"
           schema:
             type: integer
             enum:
@@ -197,34 +199,34 @@ paths:
               - 401
               - 402
               - 403
-          description: Unterrichtsform. 101=Präsenzveranstaltung, 102=Seminar, 103=Workshop, 104=Praxistraining, 105=Sonstige Präsenzveranstaltung, 201=Virtuelles Klassenzimmer, 202=Online-Seminar, 203=Online-Coaching, 204=Selbstlernmodul, 206=Sonstige digitale Lernformen, 301=Blended Learning, 302=Combined Learning, 303=Hybrid Learning, 304=Sonstige kombinierte Lernformen,401=Fernunterricht, 402=Fernlehrgang, 403=Sonstiger Fernunterricht. Mehrere Komma-getrennte Angaben möglich (z.B. uf=101,202).
+          description: "Unterrichtsform. 101=Präsenzveranstaltung, 102=Seminar, 103=Workshop, 104=Praxistraining, 105=Sonstige Präsenzveranstaltung, 201=Virtuelles Klassenzimmer, 202=Online-Seminar, 203=Online-Coaching, 204=Selbstlernmodul, 206=Sonstige digitale Lernformen, 301=Blended Learning, 302=Combined Learning, 303=Hybrid Learning, 304=Sonstige kombinierte Lernformen,401=Fernunterricht, 402=Fernlehrgang, 403=Sonstiger Fernunterricht. Mehrere Komma-getrennte Angaben möglich (z.B. uf=101,202)."
           example: 101
           required: false
 
-        - in: query
-          name: ban
+        - in: "query"
+          name: "ban"
           schema:
             type: integer
-          description: Anbieter-ID
+          description: "Anbieter-ID"
           example: 22210
           required: false
 
-        - in: query
-          name: it
+        - in: "query"
+          name: "it"
           schema:
             type: string
             enum:
-              - RC
-              - RD
-          description: Integrationstyp - RC=Ausbildung Reha, RD=weiterbildung Reha. Mehrere Komma-getrennte Angaben möglich.
+              - "RC"
+              - "RD"
+          description: "Integrationstyp - RC=Ausbildung Reha, RD=weiterbildung Reha. Mehrere Komma-getrennte Angaben möglich."
           example: "RC"
           required: false
 
-        - in: query
-          name: bg
+        - in: "query"
+          name: "bg"
           schema:
-            type: boolean
-          description: Bildungsgutschein - true=nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen, false=nicht nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen.
+            type: "boolean"
+          description: "Bildungsgutschein - true=nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen, false=nicht nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen."
           example: true
           required: false
 
@@ -234,12 +236,12 @@ security:
 
 components:
   securitySchemes:
-    APIKeyHeaders:    
-      type: apiKey
-      in: header
-      name: X-API-Key
+    APIKeyHeaders:
+      type: "apiKey"
+      in: "header"
+      name: "X-API-Key"
       description: "X-API-Key ist die Client-ID 38053956-6618-4953-b670-b4ae7a2360b1"
-      
+
 
 externalDocs:
   description: "Weiterführende Dokumentation"
