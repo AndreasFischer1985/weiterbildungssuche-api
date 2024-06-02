@@ -20,7 +20,7 @@ token=$(curl \
 -X POST 'https://rest.arbeitsagentur.de/oauth/gettoken_cc' |grep -Eo '[^"]{500,}'|head -n 1)
 ```
 
-Der generierte Token muss bei folgenden GET-requests an https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot im header als 'OAuthAccessToken' inkludiert werden.
+Der generierte Token muss bei folgenden GET-requests an https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v2/bildungsangebot im header als 'OAuthAccessToken' inkludiert werden.
 
 **Hinweis:** Alternativ kann man bei folgenden GET-requests auch direkt die neue *client_id* *22034dc9-ed09-4311-a6d8-749083d88fc6* als Header-Parameter *'X-API-Key'* übergeben - *'OAuthAccessToken'* ist in diesem Fall nicht erforderlich. 🚀
 
@@ -183,11 +183,23 @@ Integrationstyp: RC=Ausbildung Reha, RD=weiterbildung Reha. Mehrere Komma-getren
 
 Bildungsgutschein: true=nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen, false=nicht nur Angebote mit Zulassung zur Förderung mit Bildungsgutschein anzeigen.
 
+**Parameter:** *ortsunabhaengig* (Optional)
+- true
+- false
+
+Ortsunabhängigkeit: true=Angebote anzeigen die ortsunabhängig sind, false=ortsunabhängige orte ausblenden.
+
+**Parameter:** *sort* (Optional)
+- std
+- ta
+- tz
+
+Sortierung: std=Zufall,  ta=Angebotstitel A bis Z,  tz=Angebotstitel Z bis A
 
 ### Beispiel:
 
 ```bash
 wb=$(curl -m 60 \
 -H "OAuthAccessToken: $token" \
-'https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/bildungsangebot?orte=Erlangen_11.005_49.595&uk=Bundesweit&bg=false&page=0')
+'https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v2/bildungsangebot?orte=Erlangen_11.005_49.595&uk=Bundesweit&bg=false&page=0')
 ```
