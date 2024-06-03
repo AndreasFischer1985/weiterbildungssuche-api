@@ -230,6 +230,25 @@ paths:
           example: true
           required: false
 
+        - in: "query"
+          name: "ortsunabhaengig"
+          schema:
+            type: "boolean"
+          description: "true=Angebote anzeigen die ortsunabhängig sind false=ortsunabhängige orte ausblenden."
+          example: false
+          required: false
+          
+        - in: "query"
+          name: "sort"
+          schema:
+            type: string
+            enum:
+              - "std"
+              - "ta"
+              - "tz"
+          description: "Sortierung anpassen: std=Zufall,  ta=Angebotstitel A bis Z,  tz=Angebotstitel Z bis A"
+          example: "std"
+
 
 security:
   - APIKeyHeaders: []
