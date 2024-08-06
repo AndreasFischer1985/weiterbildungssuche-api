@@ -3,35 +3,20 @@ Die Bundesagentur für Arbeit verfügt über eine der größten Datenbanken für
 
 
 ## Authentifizierung
-Die Authentifizierung funktioniert per OAuth 2 Client Credentials mit JWTs.
-Client Credentials sind, wie sich z.B. einem GET-request an https://web.arbeitsagentur.de/weiterbildungssuche/suche entnehmen ließ, folgende:
+Die Authentifizierung funktioniert über die clientId der Weiterbildungssuche, die einem GET-request an https://web.arbeitsagentur.de/weiterbildungssuche/suche entnommen werden kann:
 
-**client_id:** 38053956-6618-4953-b670-b4ae7a2360b1
+clientId: infosysbub-wbsuche
 
-**client_secret:** c385073c-3b97-42a9-b916-08fd8a5d1795
-
-**grant_type:** client_credentials
-
-Die Credentials sind im body eines POST-request an https://rest.arbeitsagentur.de/oauth/gettoken_cc zu senden.
-
-```bash
-token=$(curl \
--d "client_id=38053956-6618-4953-b670-b4ae7a2360b1&client_secret=c385073c-3b97-42a9-b916-08fd8a5d1795&grant_type=client_credentials" \
--X POST 'https://rest.arbeitsagentur.de/oauth/gettoken_cc' |grep -Eo '[^"]{500,}'|head -n 1)
-```
-
-Der generierte Token muss bei folgenden GET-requests an https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v2/bildungsangebot im header als 'OAuthAccessToken' inkludiert werden.
-
-**Hinweis:** Alternativ kann man bei folgenden GET-requests auch direkt die neue *client_id* *22034dc9-ed09-4311-a6d8-749083d88fc6* als Header-Parameter *'X-API-Key'* übergeben - *'OAuthAccessToken'* ist in diesem Fall nicht erforderlich. 🚀
-
+Bei folgenden GET-requests ist die clientId als Header-Parameter 'X-API-Key' zu übergeben.
 
 ## Weiterbildungssuche
 
 **URL:** https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v2/bildungsangebot
 
 
-Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen GET-Parametern zu filtern:
+Die Weiterbildungssuche ermöglicht verfügbare Weiterbildungsangebote mit verschiedenen GET-Parametern zu filtern.
 
+Analog dazu gibt es auch einen Endpunkt https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v1/facetten.
 
 ### Filter
 
