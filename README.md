@@ -185,6 +185,6 @@ Sortierung: std=Zufall,  ta=Angebotstitel A bis Z,  tz=Angebotstitel Z bis A
 
 ```bash
 wb=$(curl -m 60 \
--H "OAuthAccessToken: $token" \
+-H "X-API-Key: infosysbub-wbsuche" \
 'https://rest.arbeitsagentur.de/infosysbub/wbsuche/pc/v2/bildungsangebot?orte=Erlangen_11.005_49.595&uk=Bundesweit&bg=false&page=0')
 ```
